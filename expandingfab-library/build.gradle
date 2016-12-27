@@ -1,16 +1,20 @@
 apply plugin: 'com.android.library'
 
+def configs = rootProject.ext
+
+def vMajor = 1
+def vMinor = 0
+def vPatch = 0
+
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion       configs.vCompileSdk
+    buildToolsVersion       configs.vBuildTools
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        minSdkVersion       configs.vMinSdk
+        targetSdkVersion    configs.vTargetSdk
+        versionCode         vMajor*100 + vMinor*10 + vPatch
+        versionName         "{$vMajor}.{$vMinor}.{$vPatch}"
 
     }
     buildTypes {
@@ -23,9 +27,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    testCompile 'junit:junit:4.12'
+
+    Map<String,String> depMap = configs.dependencies
+    compile depMap.appcompat
+    compile depMap.design
 }

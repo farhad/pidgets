@@ -1,15 +1,18 @@
 apply plugin: 'com.android.application'
 
+def configs = rootProject.ext
+
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion       configs.vCompileSdk
+    buildToolsVersion       configs.vBuildTools
+
     defaultConfig {
-        applicationId "io.github.protelco"
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        applicationId       "io.github.protelco"
+        minSdkVersion       configs.vMinSdk
+        targetSdkVersion    configs.vTargetSdk
+
+        versionCode         configs.vMajor*100 + configs.vMinor*10 + configs.vPatch
+        versionName         "{$configs.vMajor}.{$configs.vMinor}.{$configs.vPatch}"
     }
     buildTypes {
         release {
@@ -21,9 +24,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    testCompile 'junit:junit:4.12'
+
+    Map<String,String> depMap = configs.dependencies
+    compile depMap.appcompat
+    compile depMap.design
 }
