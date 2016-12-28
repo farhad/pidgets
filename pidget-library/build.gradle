@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+
+def configs = rootProject.ext
+
+android {
+    compileSdkVersion       configs.vCompileSdk
+    buildToolsVersion       configs.vBuildTools
+
+    defaultConfig {
+        minSdkVersion       configs.vMinSdk
+        targetSdkVersion    configs.vTargetSdk
+
+        versionCode         configs.vMajor*100 + configs.vMinor*10 + configs.vPatch
+        versionName         "{$configs.vMajor}.{$configs.vMinor}.{$configs.vPatch}"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    Map<String,String> depMap = configs.dependencies
+    compile depMap.appcompat
+    compile depMap.design
+}

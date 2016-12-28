@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <declare-styleable name="SvgAnimator">
+        <attr name="animatedSvgImageSizeX" format="integer" />
+        <attr name="animatedSvgImageSizeY" format="integer" />
+        <attr name="animatedSvgTraceTime" format="string" />
+        <attr name="animatedSvgTraceTimePerGlyph" format="string" />
+        <attr name="animatedSvgFillStart" format="string" />
+        <attr name="animatedSvgFillTime" format="string" />
+        <attr name="animatedSvgGlyphStrings" format="reference" />
+        <attr name="animatedSvgTraceColors" format="reference" />
+        <attr name="animatedSvgTraceResidueColors" format="reference" />
+        <attr name="animatedSvgFillColors" format="reference" />
+    </declare-styleable>
+
+    <attr name="replaceWithPersianDigits" format="boolean" />
+
+    <attr name="fontAdapterType" format="enum">
+        <enum name="regular" value="0" />
+        <enum name="semibold" value="1" />
+        <enum name="bold" value="2" />
+        <enum name="italic" value="3" />
+    </attr>
+
+    <declare-styleable name="ParsiTextView">
+
+        <attr name="replaceWithPersianDigits" />
+        <attr name="fontAdapterType" />
+
+    </declare-styleable>
+
+    <declare-styleable name="ParsiButton">
+
+        <attr name="replaceWithPersianDigits" />
+        <attr name="fontAdapterType" />
+
+    </declare-styleable>
+
+    <declare-styleable name="ParsiEditText">
+
+        <attr name="replaceWithPersianDigits" />
+        <attr name="fontAdapterType" />
+
+        <attr name="hideBottomLine" format="boolean" />
+
+    </declare-styleable>
+
+</resources>

@@ -1,1 +1,1 @@
-include ':app', ':expandingfab-library'
+include ':app', ':pidget-library'
