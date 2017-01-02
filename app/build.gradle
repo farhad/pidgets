@@ -12,7 +12,7 @@ android {
         targetSdkVersion    configs.vTargetSdk
 
         versionCode         configs.vMajor*100 + configs.vMinor*10 + configs.vPatch
-        versionName         "{$configs.vMajor}.{$configs.vMinor}.{$configs.vPatch}"
+        versionName         "$configs.vMajor.$configs.vMinor.$configs.vPatch"
     }
     buildTypes {
         release {
