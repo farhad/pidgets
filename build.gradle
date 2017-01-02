@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 buildscript {
     repositories {
         jcenter()
@@ -28,6 +30,9 @@ ext {
     vMinor = 0
     vPatch = 0
 
+    pidgetLibVersionCode = vMajor*100 + vMinor*10 + vPatch
+    pidgetLibVersionName = "$vMajor.$vMinor.$vPatch"
+
     supportPackage = "com.android.support"
     vSupportLibrary = "25.1.0"
 
@@ -36,4 +41,10 @@ ext {
             appcompat   : "$supportPackage:appcompat-v7:$vSupportLibrary" ,
             design      : "$supportPackage:design:$vSupportLibrary"
     ]
+}
+
+def getBuildTime() {
+    def df = new SimpleDateFormat("yyyy-MM-dd-HH:mm")
+    df.setTimeZone(TimeZone.getTimeZone("Asia/Tehran"))
+    return df.format(new Date())
 }

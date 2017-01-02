@@ -10,12 +10,15 @@ android {
         minSdkVersion       configs.vMinSdk
         targetSdkVersion    configs.vTargetSdk
 
-        versionCode         configs.vMajor*100 + configs.vMinor*10 + configs.vPatch
-        versionName         "{$configs.vMajor}.{$configs.vMinor}.{$configs.vPatch}"
+        versionCode         configs.pidgetLibVersionCode
+        versionName         configs.pidgetLibVersionName
     }
     buildTypes {
         release {
-            minifyEnabled false
+            def outputArtifactName = "pidgets-${configs.pidgetLibVersionName}-${rootProject.getBuildTime()}"
+            setProperty("archivesBaseName", outputArtifactName )
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
