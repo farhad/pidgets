@@ -15,7 +15,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="Pidget.BrandedLaunch" parent="Pidget.AppTheme">
+    <style name="Pidget.BrandedLaunch" parent="Pidget.AppTheme.NoActionBar">
         <item name="android:windowBackground">@drawable/branded_logo</item>
     </style>
 
