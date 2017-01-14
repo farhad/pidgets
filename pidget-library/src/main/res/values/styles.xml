@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Pidget.AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Pidget.AppTheme.DarkActionbar" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Pidget.AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
 
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -24,7 +31,7 @@
 
     <style name="Pidget.BrandedLaunch.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Pidget.BrandedLaunch.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
+    <style name="Pidget.BrandedLaunch.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="TextViewLarge">
         <item name="android:layout_width">match_parent</item>
