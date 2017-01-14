@@ -23,11 +23,11 @@ Then add the pidgets dependency :
 
 ```
 dependencies {
-	        compile 'com.github.protelco:pidgets:v1.0.0-stable'
+	        compile 'com.github.protelco:pidgets:v1.0.1'
 	}
   
 ```
 
 ## Authors
 
-* [FarhadFaghihi](https://github.com/farhadfaghihi)
+* [Farhad Faghihi](https://github.com/farhadfaghihi)
