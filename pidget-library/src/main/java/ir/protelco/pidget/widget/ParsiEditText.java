@@ -40,9 +40,16 @@ public class ParsiEditText extends AppCompatEditText {
 
     @Override
     public void setText(CharSequence text, BufferType type) {
-        if (shouldReplaceWithParsiDigits && Utils.containsDigits(text.toString())) {
 
-            super.setText(ParsiUtils.replaceWithParsiDigits(text.toString()), type);
+        if (!isInEditMode()) {
+
+            if (shouldReplaceWithParsiDigits && Utils.containsDigits(text.toString())) {
+
+                super.setText(ParsiUtils.replaceWithParsiDigits(text.toString()), type);
+            } else {
+
+                super.setText(text, type);
+            }
         } else {
 
             super.setText(text, type);
@@ -52,39 +59,45 @@ public class ParsiEditText extends AppCompatEditText {
 
     private void init(Context context) {
 
-        TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiTextView);
+        if(!isInEditMode()){
 
-        shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiTextView_replaceWithPersianDigits, false);
-        fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));
-        shouldHideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, false);
+            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiTextView);
 
-        typedArray.recycle();
+            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiTextView_replaceWithPersianDigits, false);
+            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));
+            shouldHideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, false);
 
-        if (!isInEditMode()) {
-            setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
-        }
+            typedArray.recycle();
 
-        if (shouldHideBottomLine) {
-            getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
+            if (!isInEditMode()) {
+                setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
+            }
+
+            if (shouldHideBottomLine) {
+                getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
+            }
         }
     }
 
     private void init(Context context, AttributeSet attributeSet) {
 
-        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiTextView, 0, 0);
+        if(!isInEditMode()){
 
-        shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiTextView_replaceWithPersianDigits, false);
-        fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));
-        shouldHideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, false);
+            TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiTextView, 0, 0);
 
-        typedArray.recycle();
+            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiTextView_replaceWithPersianDigits, false);
+            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));
+            shouldHideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, false);
 
-        if (!isInEditMode()) {
-            setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
-        }
+            typedArray.recycle();
 
-        if (shouldHideBottomLine) {
-            getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
+            if (!isInEditMode()) {
+                setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
+            }
+
+            if (shouldHideBottomLine) {
+                getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
+            }
         }
     }
 
