@@ -46,4 +46,18 @@
 
     </declare-styleable>
 
+    <declare-styleable name="ParsiCheckBox">
+
+        <attr name="replaceWithPersianDigits" />
+        <attr name="fontAdapterType" />
+
+    </declare-styleable>
+
+    <declare-styleable name="ParsiRadioButton">
+
+        <attr name="replaceWithPersianDigits" />
+        <attr name="fontAdapterType" />
+
+    </declare-styleable>
+
 </resources>
