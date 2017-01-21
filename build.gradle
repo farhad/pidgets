@@ -31,8 +31,8 @@ ext {
     vCompileSdk = 25
 
     vMajor = 1
-    vMinor = 4
-    vPatch = 4
+    vMinor = 5
+    vPatch = 8
 
     pidgetLibVersionCode = vMajor*100 + vMinor*10 + vPatch
     pidgetLibVersionName = "$vMajor.$vMinor.$vPatch"
@@ -44,7 +44,7 @@ ext {
 
             appcompat   : "$supportPackage:appcompat-v7:$vSupportLibrary" ,
             design      : "$supportPackage:design:$vSupportLibrary" ,
-            pidgets     : "com.github.protelco:pidgets:v1.0.4"
+            pidgets     : "com.github.protelco:pidgets:v$pidgetLibVersionName"
     ]
 }
 
