@@ -43,7 +43,8 @@ ext {
     dependencies = [
 
             appcompat   : "$supportPackage:appcompat-v7:$vSupportLibrary" ,
-            design      : "$supportPackage:design:$vSupportLibrary"
+            design      : "$supportPackage:design:$vSupportLibrary" ,
+            pidgets     : "com.github.protelco:pidgets:v1.4.4"
     ]
 }
 
