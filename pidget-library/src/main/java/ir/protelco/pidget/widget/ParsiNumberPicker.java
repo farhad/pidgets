@@ -73,5 +73,7 @@ public class ParsiNumberPicker extends NumberPicker {
             ((TextView)view).setTypeface(FontAdapter.getInstance(getContext()).getTypefaceRegular());
             ((TextView)view).setTextSize(18);
         }
+
+        requestLayout();
     }
 }

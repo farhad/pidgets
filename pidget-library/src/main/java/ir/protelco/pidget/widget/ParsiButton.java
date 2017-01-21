@@ -46,6 +46,7 @@ public class ParsiButton extends AppCompatButton {
             if (shouldReplaceWithParsiDigits && Utils.containsDigits(text.toString())) {
 
                 super.setText(ParsiUtils.replaceWithParsiDigits(text.toString()), type);
+
             } else {
 
                 super.setText(text, type);
@@ -53,6 +54,8 @@ public class ParsiButton extends AppCompatButton {
         } else {
             super.setText(text, type);
         }
+
+        requestLayout();
     }
 
 
@@ -69,6 +72,8 @@ public class ParsiButton extends AppCompatButton {
 
             setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
         }
+
+        requestLayout();
     }
 
     private void init(Context context,AttributeSet attributeSet){
@@ -85,6 +90,8 @@ public class ParsiButton extends AppCompatButton {
             setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
         }
 
+        requestLayout();
+
     }
 
 
@@ -94,6 +101,8 @@ public class ParsiButton extends AppCompatButton {
 
     public void setShouldReplaceWithParsiDigits(boolean shouldReplaceWithParsiDigits) {
         this.shouldReplaceWithParsiDigits = shouldReplaceWithParsiDigits;
+
+        requestLayout();
     }
 
     public FontType getFontType() {
@@ -102,5 +111,7 @@ public class ParsiButton extends AppCompatButton {
 
     public void setFontType(FontType fontType) {
         this.fontType = fontType;
+
+        requestLayout();
     }
 }

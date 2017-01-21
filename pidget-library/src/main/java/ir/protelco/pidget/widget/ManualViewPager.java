@@ -15,6 +15,7 @@ import java.lang.reflect.Field;
  */
 public class ManualViewPager extends ViewPager
 {
+    private int scrollDuration = 500 ;
     private boolean scrollEnabled = false ;
     private FixedSpeedScroller mScroller ;
 
@@ -49,8 +50,10 @@ public class ManualViewPager extends ViewPager
 
         catch (Exception ignored)
         {
-
+            ignored.printStackTrace();
         }
+
+        requestLayout();
     }
 
     @Override
@@ -83,15 +86,14 @@ public class ManualViewPager extends ViewPager
         this.scrollEnabled = scrollEnabled;
     }
 
+    public void setScrollDuration(int scrollDuration) {
+        this.scrollDuration = scrollDuration;
 
-
-
-
+        requestLayout();
+    }
 
     private class FixedSpeedScroller extends Scroller
     {
-        private int mDuration = 300;
-
         public FixedSpeedScroller(Context context)
         {
             super(context);
@@ -108,17 +110,13 @@ public class ManualViewPager extends ViewPager
         @Override
         public void startScroll(int startX, int startY, int dx, int dy, int duration) {
             // Ignore received duration, use fixed one instead
-            super.startScroll(startX, startY, dx, dy, mDuration);
+            super.startScroll(startX, startY, dx, dy, scrollDuration);
         }
 
         @Override
         public void startScroll(int startX, int startY, int dx, int dy) {
             // Ignore received duration, use fixed one instead
-            super.startScroll(startX, startY, dx, dy, mDuration);
-        }
-
-        public void setScrollDuration(int duration) {
-            mDuration = duration;
+            super.startScroll(startX, startY, dx, dy, scrollDuration);
         }
     }
 }

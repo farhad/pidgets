@@ -57,6 +57,8 @@ public class ParsiRadioButton extends AppCompatRadioButton {
 
             super.setText(text,type);
         }
+
+        requestLayout();
     }
 
 
@@ -73,6 +75,8 @@ public class ParsiRadioButton extends AppCompatRadioButton {
 
             setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
         }
+
+        requestLayout();
     }
 
     private void init(Context context,AttributeSet attributeSet){
@@ -88,6 +92,8 @@ public class ParsiRadioButton extends AppCompatRadioButton {
 
             setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
         }
+
+        requestLayout();
     }
 
     public boolean isShouldReplaceWithParsiDigits() {
@@ -96,6 +102,8 @@ public class ParsiRadioButton extends AppCompatRadioButton {
 
     public void setShouldReplaceWithParsiDigits(boolean shouldReplaceWithParsiDigits) {
         this.shouldReplaceWithParsiDigits = shouldReplaceWithParsiDigits;
+
+        requestLayout();
     }
 
     public FontType getFontType() {
@@ -104,5 +112,7 @@ public class ParsiRadioButton extends AppCompatRadioButton {
 
     public void setFontType(FontType fontType) {
         this.fontType = fontType;
+
+        requestLayout();
     }
 }

@@ -47,12 +47,16 @@ public class ParsiCheckBox extends AppCompatCheckBox {
             } else {
 
                 super.setText(text, type);
+
+                requestLayout();
             }
         }
 
         else {
 
             super.setText(text,type);
+
+            requestLayout();
         }
     }
 
@@ -69,6 +73,8 @@ public class ParsiCheckBox extends AppCompatCheckBox {
 
             setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
         }
+
+        requestLayout();
     }
 
     private void init(Context context,AttributeSet attributeSet){
@@ -84,6 +90,8 @@ public class ParsiCheckBox extends AppCompatCheckBox {
 
             setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
         }
+
+        requestLayout();
     }
 
     public boolean isShouldReplaceWithParsiDigits() {
@@ -92,6 +100,8 @@ public class ParsiCheckBox extends AppCompatCheckBox {
 
     public void setShouldReplaceWithParsiDigits(boolean shouldReplaceWithParsiDigits) {
         this.shouldReplaceWithParsiDigits = shouldReplaceWithParsiDigits;
+
+        requestLayout();
     }
 
     public FontType getFontType() {
@@ -100,5 +110,7 @@ public class ParsiCheckBox extends AppCompatCheckBox {
 
     public void setFontType(FontType fontType) {
         this.fontType = fontType;
+
+        requestLayout();
     }
 }

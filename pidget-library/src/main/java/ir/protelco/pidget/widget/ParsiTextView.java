@@ -53,6 +53,7 @@ public class ParsiTextView extends AppCompatTextView {
             super.setText(text,type);
         }
 
+        requestLayout();
     }
 
     private void init(Context context) {
@@ -68,6 +69,8 @@ public class ParsiTextView extends AppCompatTextView {
 
             setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
         }
+
+        requestLayout();
     }
 
     private void init(Context context, AttributeSet attributeSet) {
@@ -83,6 +86,8 @@ public class ParsiTextView extends AppCompatTextView {
 
             setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
         }
+
+        requestLayout();
     }
 
 
@@ -92,6 +97,8 @@ public class ParsiTextView extends AppCompatTextView {
 
     public void setShouldReplaceWithParsiDigits(boolean shouldReplaceWithParsiDigits) {
         this.shouldReplaceWithParsiDigits = shouldReplaceWithParsiDigits;
+
+        requestLayout();
     }
 
     public FontType getFontType() {
@@ -100,5 +107,7 @@ public class ParsiTextView extends AppCompatTextView {
 
     public void setFontType(FontType fontType) {
         this.fontType = fontType;
+
+        requestLayout();
     }
 }

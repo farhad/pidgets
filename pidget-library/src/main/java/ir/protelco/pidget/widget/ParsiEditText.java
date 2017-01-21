@@ -46,6 +46,7 @@ public class ParsiEditText extends AppCompatEditText {
             if (shouldReplaceWithParsiDigits && Utils.containsDigits(text.toString())) {
 
                 super.setText(ParsiUtils.replaceWithParsiDigits(text.toString()), type);
+
             } else {
 
                 super.setText(text, type);
@@ -54,6 +55,8 @@ public class ParsiEditText extends AppCompatEditText {
 
             super.setText(text, type);
         }
+
+        requestLayout();
     }
 
 
@@ -77,6 +80,8 @@ public class ParsiEditText extends AppCompatEditText {
                 getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
             }
         }
+
+        requestLayout();
     }
 
     private void init(Context context, AttributeSet attributeSet) {
@@ -99,6 +104,8 @@ public class ParsiEditText extends AppCompatEditText {
                 getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
             }
         }
+
+        requestLayout();
     }
 
 
@@ -108,6 +115,8 @@ public class ParsiEditText extends AppCompatEditText {
 
     public void setShouldReplaceWithParsiDigits(boolean shouldReplaceWithParsiDigits) {
         this.shouldReplaceWithParsiDigits = shouldReplaceWithParsiDigits;
+
+        requestLayout();
     }
 
     public FontType getFontType() {
@@ -116,6 +125,8 @@ public class ParsiEditText extends AppCompatEditText {
 
     public void setFontType(FontType fontType) {
         this.fontType = fontType;
+
+        requestLayout();
     }
 
     public boolean shouldHideBottomLine() {
@@ -124,6 +135,8 @@ public class ParsiEditText extends AppCompatEditText {
 
     public void setShouldHideBottomLine(boolean shouldHideBottomLine) {
         this.shouldHideBottomLine = shouldHideBottomLine;
+
+        requestLayout();
     }
 
 }
