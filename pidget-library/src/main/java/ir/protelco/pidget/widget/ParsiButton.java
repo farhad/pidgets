@@ -63,7 +63,7 @@ public class ParsiButton extends AppCompatButton {
 
         if(!isInEditMode()){
 
-            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiTextView) ;
+            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiButton) ;
 
             shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiButton_replaceWithPersianDigits,true) ;
             fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiButton_fontAdapterType,0)) ;
@@ -80,7 +80,7 @@ public class ParsiButton extends AppCompatButton {
 
         if(!isInEditMode()){
 
-            TypedArray typedArray = context.obtainStyledAttributes(attributeSet,R.styleable.ParsiTextView,0,0) ;
+            TypedArray typedArray = context.obtainStyledAttributes(attributeSet,R.styleable.ParsiButton,0,0) ;
 
             shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiButton_replaceWithPersianDigits,true) ;
             fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiButton_fontAdapterType,0)) ;

@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import ir.protelco.pidget.R;
 import ir.protelco.pidget.font.FontAdapter;
 import ir.protelco.pidget.font.FontType;
+import ir.protelco.pidget.parsi.Parsi;
 import ir.protelco.pidget.parsi.ParsiUtils;
 import ir.protelco.pidget.utils.Utils;
 
@@ -52,8 +53,6 @@ public class ParsiEditText extends AppCompatEditText {
 
             super.setText(text, type);
         }
-
-        requestLayout();
     }
 
 
@@ -61,7 +60,7 @@ public class ParsiEditText extends AppCompatEditText {
 
         if(!isInEditMode()){
 
-            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiTextView);
+            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiEditText);
 
             shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_replaceWithPersianDigits, true);
             fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));
@@ -83,7 +82,7 @@ public class ParsiEditText extends AppCompatEditText {
 
         if(!isInEditMode()){
 
-            TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiTextView, 0, 0);
+            TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiEditText, 0, 0);
 
             shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_replaceWithPersianDigits, true);
             fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));

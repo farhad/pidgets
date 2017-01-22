@@ -64,7 +64,7 @@ public class ParsiCheckBox extends AppCompatCheckBox {
 
         if(!isInEditMode()){
 
-            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiTextView);
+            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiCheckBox);
 
             shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiCheckBox_replaceWithPersianDigits, true);
             fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiCheckBox_fontAdapterType, 0));
