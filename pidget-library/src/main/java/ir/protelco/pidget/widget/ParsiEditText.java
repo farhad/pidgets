@@ -41,17 +41,14 @@ public class ParsiEditText extends AppCompatEditText {
     @Override
     public void setText(CharSequence text, BufferType type) {
 
-        if (!isInEditMode()) {
+        if (shouldReplaceWithParsiDigits && Utils.containsDigits(text.toString())) {
 
-            if (shouldReplaceWithParsiDigits && Utils.containsDigits(text.toString())) {
+            String convertedText = ParsiUtils.replaceWithParsiDigits(text.toString()) ;
 
-                super.setText(ParsiUtils.replaceWithParsiDigits(text.toString()), type);
+            super.setText(convertedText, type);
+        }
 
-            } else {
-
-                super.setText(text, type);
-            }
-        } else {
+        else {
 
             super.setText(text, type);
         }
