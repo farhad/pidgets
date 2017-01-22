@@ -62,8 +62,8 @@ public class ParsiTextView extends AppCompatTextView {
 
             TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiTextView);
 
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiTextView_replaceWithPersianDigits, false);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));
+            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiTextView_replaceWithPersianDigits, true);
+            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiTextView_fontAdapterType, 0));
 
             typedArray.recycle();
 
@@ -79,8 +79,8 @@ public class ParsiTextView extends AppCompatTextView {
 
             TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiTextView, 0, 0);
 
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiTextView_replaceWithPersianDigits, false);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));
+            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiTextView_replaceWithPersianDigits, true);
+            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiTextView_fontAdapterType, 0));
 
             typedArray.recycle();
 

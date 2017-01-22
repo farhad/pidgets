@@ -66,15 +66,13 @@ public class ParsiEditText extends AppCompatEditText {
 
             TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiTextView);
 
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiTextView_replaceWithPersianDigits, false);
+            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_replaceWithPersianDigits, true);
             fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));
-            shouldHideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, false);
+            shouldHideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, true);
 
             typedArray.recycle();
 
-            if (!isInEditMode()) {
-                setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
-            }
+            setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
 
             if (shouldHideBottomLine) {
                 getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
@@ -90,9 +88,9 @@ public class ParsiEditText extends AppCompatEditText {
 
             TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiTextView, 0, 0);
 
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiTextView_replaceWithPersianDigits, false);
+            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_replaceWithPersianDigits, true);
             fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));
-            shouldHideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, false);
+            shouldHideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, true);
 
             typedArray.recycle();
 
