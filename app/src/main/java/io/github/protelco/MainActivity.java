@@ -2,10 +2,19 @@ package io.github.protelco;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import ir.protelco.pidget.parsi.ParsiUtils;
+import ir.protelco.pidget.widget.ParsiEditText;
+
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends Activity {
 
@@ -14,20 +23,25 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initLayout();
-    }
+        Button btn = (Button)findViewById(R.id.btn);
 
-    private void initLayout() {
-        View v = findViewById(R.id.touch_me_view);
-        v.setOnTouchListener(new View.OnTouchListener() {
+        CustomEditText editText = (CustomEditText)findViewById(R.id.et) ;
+
+        editText.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/irsansregular.ttf"));
+        editText.setText("345345345");
+
+        final ParsiEditText parsiEditText = (ParsiEditText)findViewById(R.id.et2) ;
+
+        parsiEditText.setText("0935227،7060");
+
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Intent i = new Intent(MainActivity.this, RevealActivity.class);
-                i.putExtra("x", (int)event.getX()); //We'll cover why we put x and y into the Intent
-                i.putExtra("y", (int)event.getY());
-                startActivity(i);
-                return false;
+            public void onClick(View view) {
+
+                Log.d("custom",ParsiUtils.replaceWithEnglishDigits(parsiEditText.getText().toString())) ;
             }
         });
+
+
     }
 }

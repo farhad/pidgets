@@ -3,21 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/colorPrimary">
 
-    <View
-        android:id="@+id/touch_me_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tap!"
-        android:textColor="@android:color/white"
+    <LinearLayout
         android:layout_gravity="center"
-        android:textSize="25sp"/>
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <io.github.protelco.CustomEditText
+            android:id="@+id/et"
+            android:minEms="11"
+            android:background="@color/white"
+            android:padding="@dimen/padding_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ir.protelco.pidget.widget.ParsiEditText
+            android:id="@+id/et2"
+            android:minEms="11"
+            android:backgroundTint="@color/colorAccent"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:padding="@dimen/padding_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ir.protelco.pidget.widget.ParsiButton
+            android:id="@+id/btn"
+            android:text="تایید"
+            android:layout_marginTop="20dp"
+            app:fontAdapterType="regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </FrameLayout>
