@@ -5,6 +5,9 @@ import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatEditText;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.AttributeSet;
 
 import ir.protelco.pidget.R;
@@ -14,12 +17,16 @@ import ir.protelco.pidget.parsi.Parsi;
 import ir.protelco.pidget.parsi.ParsiUtils;
 import ir.protelco.pidget.utils.Utils;
 
+import static ir.protelco.pidget.parsi.ParsiUtils.*;
+
 
 public class ParsiEditText extends AppCompatEditText {
 
     private boolean shouldReplaceWithParsiDigits;
     private FontType fontType;
     private boolean shouldHideBottomLine;
+
+    private InputFilter inputFilter ;
 
     public ParsiEditText(Context context) {
         super(context);
@@ -36,72 +43,65 @@ public class ParsiEditText extends AppCompatEditText {
     public ParsiEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        init(context, attrs);
-    }
-
-    @Override
-    public void setText(CharSequence text, BufferType type) {
-
-        if (shouldReplaceWithParsiDigits && Utils.containsDigits(text.toString())) {
-
-            String convertedText = ParsiUtils.replaceWithParsiDigits(text.toString()) ;
-
-            super.setText(convertedText, type);
-        }
-
-        else {
-
-            super.setText(text, type);
-        }
+        init(context, attrs , defStyleAttr);
     }
 
 
     private void init(Context context) {
 
-        if(!isInEditMode()){
+        TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiEditText);
 
-            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiEditText);
+        initialize(context,typedArray);
 
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_replaceWithPersianDigits, true);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));
-            shouldHideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, true);
-
-            typedArray.recycle();
-
-            setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
-
-            if (shouldHideBottomLine) {
-                getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
-            }
-        }
-
-        requestLayout();
+        typedArray.recycle();
     }
 
     private void init(Context context, AttributeSet attributeSet) {
 
-        if(!isInEditMode()){
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiEditText, 0, 0);
 
-            TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiEditText, 0, 0);
+        initialize(context,typedArray);
 
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_replaceWithPersianDigits, true);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));
-            shouldHideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, true);
+        typedArray.recycle();
 
-            typedArray.recycle();
-
-            if (!isInEditMode()) {
-                setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
-            }
-
-            if (shouldHideBottomLine) {
-                getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
-            }
-        }
-
-        requestLayout();
     }
 
+    private void init(Context context,AttributeSet attributeSet, int defStyleAttr){
+
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet,R.styleable.ParsiEditText,defStyleAttr,defStyleAttr) ;
+
+        initialize(context,typedArray);
+
+        typedArray.recycle();
+    }
+
+    private void initialize(Context context ,TypedArray typedArray){
+
+        shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_replaceWithPersianDigits, true);
+        fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));
+        shouldHideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, true);
+
+        setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
+
+        if (shouldHideBottomLine) {
+            getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
+        }
+
+        inputFilter = new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence charSequence, int i, int i1, Spanned spanned, int i2, int i3) {
+
+                if(Utils.containsDigits(charSequence.toString()) && shouldReplaceWithParsiDigits()){
+
+                    return replaceWithParsiDigits(charSequence.toString()) ;
+                }
+
+                return charSequence ;
+            }
+        } ;
+
+        this.setFilters(new InputFilter[]{inputFilter});
+    }
 
     public boolean shouldReplaceWithParsiDigits() {
         return shouldReplaceWithParsiDigits;
@@ -110,7 +110,6 @@ public class ParsiEditText extends AppCompatEditText {
     public void setShouldReplaceWithParsiDigits(boolean shouldReplaceWithParsiDigits) {
         this.shouldReplaceWithParsiDigits = shouldReplaceWithParsiDigits;
 
-        requestLayout();
     }
 
     public FontType getFontType() {
@@ -119,8 +118,6 @@ public class ParsiEditText extends AppCompatEditText {
 
     public void setFontType(FontType fontType) {
         this.fontType = fontType;
-
-        requestLayout();
     }
 
     public boolean shouldHideBottomLine() {
@@ -130,7 +127,10 @@ public class ParsiEditText extends AppCompatEditText {
     public void setShouldHideBottomLine(boolean shouldHideBottomLine) {
         this.shouldHideBottomLine = shouldHideBottomLine;
 
-        requestLayout();
+        if(shouldHideBottomLine){
+
+            getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
+        }
     }
 
 }
