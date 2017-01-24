@@ -9,6 +9,10 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.Spanned;
 import android.util.AttributeSet;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import ir.protelco.pidget.R;
 import ir.protelco.pidget.font.FontAdapter;
@@ -86,21 +90,6 @@ public class ParsiEditText extends AppCompatEditText {
         if (shouldHideBottomLine) {
             getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
         }
-
-        inputFilter = new InputFilter() {
-            @Override
-            public CharSequence filter(CharSequence charSequence, int i, int i1, Spanned spanned, int i2, int i3) {
-
-                if(Utils.containsDigits(charSequence.toString()) && shouldReplaceWithParsiDigits()){
-
-                    return replaceWithParsiDigits(charSequence.toString()) ;
-                }
-
-                return charSequence ;
-            }
-        } ;
-
-        this.setFilters(new InputFilter[]{inputFilter});
     }
 
     public boolean shouldReplaceWithParsiDigits() {
