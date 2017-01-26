@@ -11,6 +11,7 @@
 
     <color name="pidget_ripple_color">@color/flat_white_light</color>
     <color name="pidget_ripple_color_alt">@color/flat_black_dark</color>
+    <color name="pidget_edittext_stroke">@color/colorAccent</color>
 
     <color name="white">#FFFFFF</color>
     <color name="transparent">#0000</color>
