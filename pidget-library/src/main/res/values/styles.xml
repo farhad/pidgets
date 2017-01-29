@@ -137,6 +137,16 @@
         <item name="fontAdapterType">bold</item>
     </style>
 
+    <style name="PhoneNumberEditTextMediumBold" parent="EditTextMediumNoMarginWhiteBold">
+        <item name="android:inputType">phone</item>
+        <item name="android:maxLength">11</item>
+        <item name="android:hint">@string/pidget_hint_edittext_phonenumber</item>
+    </style>
+
+    <style name="PhoneNumberEditTextLargeBold" parent="PhoneNumberEditTextMediumBold">
+        <item name="textSize">@dimen/text_large</item>
+    </style>
+
 
 
 </resources>
