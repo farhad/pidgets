@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Pidget</string>
+
+    <string name="pidget_hint_edittext_phonenumber">شماره تلفن همراه</string>
 </resources>
