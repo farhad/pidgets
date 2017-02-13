@@ -31,9 +31,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Pidget.BrandedLaunch.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Pidget.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Pidget.BrandedLaunch.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Pidget.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="TextViewLarge">
         <item name="android:layout_width">match_parent</item>

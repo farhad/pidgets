@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 public class Utils {
 
 
-    private static String getFormattedMoney(String value, String separator) {
+    public static String getFormattedMoney(String value, String separator) {
         String result = "";
         int len = value.length();
         int loop = (len / 3);
