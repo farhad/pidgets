@@ -32,7 +32,7 @@ ext {
 
     vMajor = 1
     vMinor = 8
-    vPatch = 0
+    vPatch = 2
 
     pidgetLibVersionCode = vMajor*100 + vMinor*10 + vPatch
     pidgetLibVersionName = "$vMajor.$vMinor.$vPatch"
