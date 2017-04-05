@@ -37,13 +37,13 @@ ext {
     pidgetLibVersionName = "$vMajor.$vMinor.$vPatch"
 
     supportPackage = "com.android.support"
-    vSupportLibrary = "25.1.0"
+    vSupportLibrary = "25.3.1"
 
     dependencies = [
 
             appcompat   : "$supportPackage:appcompat-v7:$vSupportLibrary" ,
             design      : "$supportPackage:design:$vSupportLibrary" ,
-            pidgets     : "com.github.protelco:pidgets:v1.6.8"
+            pidgets     : "com.github.protelco:pidgets:v1.8.4"
     ]
 }
 
