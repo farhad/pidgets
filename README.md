@@ -23,7 +23,7 @@ Then add the pidgets dependency :
 
 ```
 dependencies {
-	        compile 'com.github.protelco:pidgets:v1.8.5'
+	        compile 'com.github.protelco:pidgets:v1.8.6'
 	}
   
 ```
