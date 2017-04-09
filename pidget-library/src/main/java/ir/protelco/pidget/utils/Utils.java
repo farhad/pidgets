@@ -51,31 +51,6 @@ public class Utils {
         return result;
     }
 
-    public static String removeIntlCode(String phoneNumer) {
-        if (!TextUtils.isEmpty(phoneNumer) && phoneNumer.startsWith("98")) {
-            if (!phoneNumer.startsWith("0"))
-                return "0" + phoneNumer.substring(2);
-            else
-                return phoneNumer.substring(2);
-        }
-
-        return "";
-    }
-
-    public static String getHashedPhoneNumber(String phoneNumber) {
-        String hashedNumber = "";
-
-        if (!TextUtils.isEmpty(phoneNumber)) {
-            hashedNumber = phoneNumber.substring(0, 4);
-
-            hashedNumber += "***";
-
-            hashedNumber += phoneNumber.substring(7);
-        }
-
-        return hashedNumber;
-    }
-
     public static boolean containsDigits(String text) {
 
         Pattern pattern = Pattern.compile("([0-9])");
