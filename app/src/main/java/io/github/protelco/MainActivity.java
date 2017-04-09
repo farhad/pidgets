@@ -22,26 +22,5 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Button btn = (Button)findViewById(R.id.btn);
-
-        CustomEditText editText = (CustomEditText)findViewById(R.id.et) ;
-
-        editText.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/irsansregular.ttf"));
-        editText.setText("345345345");
-
-        final ParsiEditText parsiEditText = (ParsiEditText)findViewById(R.id.et2) ;
-
-        parsiEditText.setText("0935227،7060");
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Log.d("custom",ParsiUtils.replaceWithEnglishDigits(parsiEditText.getText().toString())) ;
-            }
-        });
-
-
     }
 }

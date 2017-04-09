@@ -14,17 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <io.github.protelco.CustomEditText
+        <ir.protelco.pidget.widget.ParsiEditText
             android:id="@+id/et"
             android:minEms="11"
-            android:background="@color/white"
-            android:padding="@dimen/padding_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <ir.protelco.pidget.widget.ParsiEditText
-            android:id="@+id/et2"
-            android:minEms="11"
+            app:fontAdapterType="regular"
             android:backgroundTint="@color/colorPrimary"
             android:layout_marginTop="20dp"
             android:background="@color/white"
@@ -34,6 +27,8 @@
 
         <ir.protelco.pidget.widget.ParsiButton
             android:id="@+id/btn"
+            style="@style/ButtonMediumNoMarginAccent"
+            android:textColor="@color/white"
             android:text="تایید"
             android:layout_marginTop="20dp"
             app:fontAdapterType="regular"
