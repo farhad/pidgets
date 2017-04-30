@@ -1,4 +1,4 @@
-package ir.protelco.pidget.utils;
+package ir.jibmib.pidgets.utils;
 
 import android.text.TextUtils;
 

@@ -1,27 +1,16 @@
-package ir.protelco.pidget.widget;
+package ir.jibmib.pidgets.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatEditText;
-import android.text.Editable;
 import android.text.InputFilter;
-import android.text.Spanned;
 import android.util.AttributeSet;
-import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import ir.protelco.pidget.R;
-import ir.protelco.pidget.font.FontAdapter;
-import ir.protelco.pidget.font.FontType;
-import ir.protelco.pidget.parsi.Parsi;
-import ir.protelco.pidget.parsi.ParsiUtils;
-import ir.protelco.pidget.utils.Utils;
-
-import static ir.protelco.pidget.parsi.ParsiUtils.*;
+import ir.jibmib.pidgets.R;
+import ir.jibmib.pidgets.font.FontAdapter;
+import ir.jibmib.pidgets.font.FontType;
 
 
 public class ParsiEditText extends AppCompatEditText {

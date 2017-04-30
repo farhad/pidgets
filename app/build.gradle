@@ -7,7 +7,7 @@ android {
     buildToolsVersion       configs.vBuildTools
 
     defaultConfig {
-        applicationId       "io.github.protelco"
+        applicationId       "io.github.jibmib"
         minSdkVersion       configs.vMinSdk
         targetSdkVersion    configs.vTargetSdk
 

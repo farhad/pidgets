@@ -1,40 +1,43 @@
-package ir.protelco.pidget.widget;
+package ir.jibmib.pidgets.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v7.widget.AppCompatCheckBox;
+import android.support.v7.widget.AppCompatRadioButton;
 import android.util.AttributeSet;
-import ir.protelco.pidget.R;
-import ir.protelco.pidget.font.FontAdapter;
-import ir.protelco.pidget.font.FontType;
-import ir.protelco.pidget.parsi.ParsiUtils;
-import ir.protelco.pidget.utils.Utils;
+import ir.jibmib.pidgets.R;
+import ir.jibmib.pidgets.font.FontAdapter;
+import ir.jibmib.pidgets.font.FontType;
+import ir.jibmib.pidgets.parsi.ParsiUtils;
+import ir.jibmib.pidgets.utils.Utils;
 
 /**
  * Created by haniyeh on 08/07/16.
  */
-public class ParsiCheckBox extends AppCompatCheckBox {
+public class ParsiRadioButton extends AppCompatRadioButton {
 
     private boolean shouldReplaceWithParsiDigits;
     private FontType fontType;
 
-    public ParsiCheckBox(Context context) {
+
+    public ParsiRadioButton(Context context) {
         super(context);
 
         init(context);
     }
 
-    public ParsiCheckBox(Context context, AttributeSet attrs) {
+    public ParsiRadioButton(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         init(context,attrs);
     }
 
-    public ParsiCheckBox(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ParsiRadioButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         init(context,attrs);
     }
+
+
 
     @Override
     public void setText(CharSequence text, BufferType type)
@@ -47,27 +50,26 @@ public class ParsiCheckBox extends AppCompatCheckBox {
             } else {
 
                 super.setText(text, type);
-
-                requestLayout();
             }
         }
 
         else {
 
             super.setText(text,type);
-
-            requestLayout();
         }
+
+        requestLayout();
     }
+
 
     private void init(Context context){
 
         if(!isInEditMode()){
 
-            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiCheckBox);
+            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiRadioButton);
 
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiCheckBox_replaceWithPersianDigits, true);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiCheckBox_fontAdapterType, 0));
+            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiRadioButton_replaceWithPersianDigits, true);
+            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiRadioButton_fontAdapterType, 0));
 
             typedArray.recycle();
 
@@ -81,10 +83,10 @@ public class ParsiCheckBox extends AppCompatCheckBox {
 
         if(!isInEditMode()){
 
-            TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiTextView, 0, 0);
+            TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiRadioButton, 0, 0);
 
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiCheckBox_replaceWithPersianDigits, true);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiCheckBox_fontAdapterType, 0));
+            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiRadioButton_replaceWithPersianDigits, true);
+            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiRadioButton_fontAdapterType, 0));
 
             typedArray.recycle();
 

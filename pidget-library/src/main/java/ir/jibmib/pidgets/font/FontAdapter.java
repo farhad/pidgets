@@ -1,4 +1,4 @@
-package ir.protelco.pidget.font;
+package ir.jibmib.pidgets.font;
 
 import android.content.Context;
 import android.graphics.Typeface;

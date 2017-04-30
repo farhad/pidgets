@@ -1,4 +1,4 @@
-package ir.protelco.pidget.parsi;
+package ir.jibmib.pidgets.parsi;
 
 /**
  * Created by Farhad on 11/9/2015.

@@ -1,15 +1,15 @@
-package ir.protelco.pidget.widget;
+package ir.jibmib.pidgets.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
-import ir.protelco.pidget.R;
-import ir.protelco.pidget.font.FontAdapter;
-import ir.protelco.pidget.font.FontType;
-import ir.protelco.pidget.parsi.ParsiUtils;
-import ir.protelco.pidget.utils.Utils;
+import ir.jibmib.pidgets.R;
+import ir.jibmib.pidgets.font.FontAdapter;
+import ir.jibmib.pidgets.font.FontType;
+import ir.jibmib.pidgets.parsi.ParsiUtils;
+import ir.jibmib.pidgets.utils.Utils;
 
 public class ParsiTextView extends AppCompatTextView {
 

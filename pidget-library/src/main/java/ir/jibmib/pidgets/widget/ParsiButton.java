@@ -1,61 +1,58 @@
-package ir.protelco.pidget.widget;
+package ir.jibmib.pidgets.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v7.widget.AppCompatRadioButton;
+import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
-import ir.protelco.pidget.R;
-import ir.protelco.pidget.font.FontAdapter;
-import ir.protelco.pidget.font.FontType;
-import ir.protelco.pidget.parsi.ParsiUtils;
-import ir.protelco.pidget.utils.Utils;
+
+import ir.jibmib.pidgets.R;
+import ir.jibmib.pidgets.font.FontAdapter;
+import ir.jibmib.pidgets.font.FontType;
+import ir.jibmib.pidgets.parsi.ParsiUtils;
+import ir.jibmib.pidgets.utils.Utils;
 
 /**
- * Created by haniyeh on 08/07/16.
+ * Created by farhad on 12/20/16.
  */
-public class ParsiRadioButton extends AppCompatRadioButton {
 
-    private boolean shouldReplaceWithParsiDigits;
-    private FontType fontType;
+public class ParsiButton extends AppCompatButton {
 
+    private boolean  shouldReplaceWithParsiDigits;
+    private FontType fontType ;
 
-    public ParsiRadioButton(Context context) {
+    public ParsiButton(Context context) {
         super(context);
 
         init(context);
     }
 
-    public ParsiRadioButton(Context context, AttributeSet attrs) {
+    public ParsiButton(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         init(context,attrs);
     }
 
-    public ParsiRadioButton(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ParsiButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         init(context,attrs);
     }
 
-
-
     @Override
-    public void setText(CharSequence text, BufferType type)
-    {
-        if(!isInEditMode()){
+    public void setText(CharSequence text, BufferType type) {
+
+        if (!isInEditMode()) {
 
             if (shouldReplaceWithParsiDigits && Utils.containsDigits(text.toString())) {
 
                 super.setText(ParsiUtils.replaceWithParsiDigits(text.toString()), type);
+
             } else {
 
                 super.setText(text, type);
             }
-        }
-
-        else {
-
-            super.setText(text,type);
+        } else {
+            super.setText(text, type);
         }
 
         requestLayout();
@@ -66,10 +63,10 @@ public class ParsiRadioButton extends AppCompatRadioButton {
 
         if(!isInEditMode()){
 
-            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiRadioButton);
+            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiButton) ;
 
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiRadioButton_replaceWithPersianDigits, true);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiRadioButton_fontAdapterType, 0));
+            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiButton_replaceWithPersianDigits,true) ;
+            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiButton_fontAdapterType,0)) ;
 
             typedArray.recycle();
 
@@ -83,10 +80,10 @@ public class ParsiRadioButton extends AppCompatRadioButton {
 
         if(!isInEditMode()){
 
-            TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiRadioButton, 0, 0);
+            TypedArray typedArray = context.obtainStyledAttributes(attributeSet,R.styleable.ParsiButton,0,0) ;
 
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiRadioButton_replaceWithPersianDigits, true);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiRadioButton_fontAdapterType, 0));
+            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiButton_replaceWithPersianDigits,true) ;
+            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiButton_fontAdapterType,0)) ;
 
             typedArray.recycle();
 
@@ -94,9 +91,11 @@ public class ParsiRadioButton extends AppCompatRadioButton {
         }
 
         requestLayout();
+
     }
 
-    public boolean isShouldReplaceWithParsiDigits() {
+
+    public boolean shouldReplaceWithParsiDigits() {
         return shouldReplaceWithParsiDigits;
     }
 

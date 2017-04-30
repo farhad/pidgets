@@ -1,4 +1,4 @@
-package ir.protelco.pidget.font;
+package ir.jibmib.pidgets.font;
 
 /**
  * Created by farhad on 12/18/16.

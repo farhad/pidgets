@@ -1,4 +1,4 @@
-package ir.protelco.pidget.parsi;
+package ir.jibmib.pidgets.parsi;
 
 public class ParsiReshape {
 

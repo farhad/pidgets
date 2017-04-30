@@ -1,4 +1,4 @@
-package ir.protelco.pidget.widget;
+package ir.jibmib.pidgets.widget;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
