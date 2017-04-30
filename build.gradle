@@ -31,10 +31,10 @@ ext {
 
     vMajor = 1
     vMinor = 9
-    vPatch = 0
+    vPatch = 1
 
     pidgetLibVersionCode = vMajor*100 + vMinor*10 + vPatch
-    pidgetLibVersionName = "$vMajor.$vMinor.$vPatch"
+    pidgetLibVersionName = "${vMajor}.${vMinor}.${vPatch}"
 
     supportPackage = "com.android.support"
     vSupportLibrary = "25.3.1"
@@ -43,7 +43,7 @@ ext {
 
             appcompat   : "$supportPackage:appcompat-v7:$vSupportLibrary" ,
             design      : "$supportPackage:design:$vSupportLibrary" ,
-            pidgets     : "com.github.jibmib:pidgets:v1.8.7"
+            pidgets     : "com.github.jibmib:pidgets:v1.9.0"
     ]
 }
 
