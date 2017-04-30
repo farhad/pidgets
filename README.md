@@ -10,21 +10,19 @@ Add the Jitpack.io Maven Repository to the build.gradle :
 
 ```
 
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+repositories {
+
+    maven { 
+        url 'https://jitpack.io'
+    }
+}
   
 ```
 
 Then add the pidgets dependency :
 
 ```
-dependencies {
-	        compile 'com.github.protelco:pidgets:v1.8.6'
-	}
+compile    'com.github.protelco:pidgets:v1.8.7'
   
 ```
 
