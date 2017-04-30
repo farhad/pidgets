@@ -1,8 +1,8 @@
-package io.github.protelco;
+package io.github.jibmib;
 
 import android.app.Application;
 
-import ir.protelco.pidget.font.FontAdapter;
+import ir.jibmib.pidgets.font.FontAdapter;
 
 /**
  * Created by farhad on 1/22/17.
