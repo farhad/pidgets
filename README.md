@@ -22,7 +22,7 @@ repositories {
 Then add the pidgets dependency :
 
 ```
-compile    'com.github.jibmib:pidgets:v1.9.1'
+compile    'com.github.jibmib:pidgets:v1.9.2'
   
 ```
 
