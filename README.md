@@ -22,7 +22,7 @@ repositories {
 Then add the pidgets dependency :
 
 ```
-compile    'com.github.protelco:pidgets:v1.8.7'
+compile    'com.github.protelco:pidgets:v1.9.0'
   
 ```
 
