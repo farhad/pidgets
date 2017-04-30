@@ -43,7 +43,7 @@ ext {
 
             appcompat   : "$supportPackage:appcompat-v7:$vSupportLibrary" ,
             design      : "$supportPackage:design:$vSupportLibrary" ,
-            pidgets     : "com.github.jibmib:pidgets:v1.9.0"
+            pidgets     : "com.github.jibmib:pidgets:v1.9.1"
     ]
 }
 
