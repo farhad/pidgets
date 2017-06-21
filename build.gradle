@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
+        classpath 'com.android.tools.build:gradle:2.3.3'
     }
 }
 
@@ -15,6 +15,7 @@ allprojects {
         mavenCentral()
         jcenter()
         maven { url 'https://jitpack.io' }
+        maven { url "https://maven.google.com" }
     }
 }
 
@@ -24,7 +25,7 @@ task clean(type: Delete) {
 
 ext {
 
-    vBuildTools = "25.0.2"
+    vBuildTools = "26.0.0"
     vMinSdk = 15
     vTargetSdk = 25
     vCompileSdk = 25
@@ -37,7 +38,7 @@ ext {
     pidgetLibVersionName = "${vMajor}.${vMinor}.${vPatch}"
 
     supportPackage = "com.android.support"
-    vSupportLibrary = "25.3.1"
+    vSupportLibrary = "25.4.0"
 
     dependencies = [
 
