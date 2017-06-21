@@ -23,10 +23,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
-    Map<String,String> depMap = configs.dependencies
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    Map<String, String> depMap = configs.dependencies
     compile depMap.appcompat
     compile depMap.design
-    compile depMap.pidgets
+    compile project(':pidget-library')
 }
