@@ -42,28 +42,24 @@ public class PhoneNumberUtils {
      */
     public static String formatToIranMsisdnPattern(String msisdn)
     {
-        if(!TextUtils.isEmpty(msisdn)){
+        if(!TextUtils.isEmpty(msisdn) && TextUtils.isDigitsOnly(msisdn)){
 
-            String output = removeIntlCodeFromMsisdn(msisdn);
+            String output = formatToIranMsisdnPattern(removeWhiteSpaces(msisdn).trim());
 
-            if(TextUtils.isDigitsOnly(output)) {
+            if(output.length() == 11) {
+                return output ;
+            }
+            else if(!output.startsWith("0") && output.length() == 10) {
+                return "0" + output ;
+            }
 
-                if(output.length() == 11) {
-                    return output ;
-                }
-                else if(!output.startsWith("0") && output.length() == 10) {
-                    return "0" + output ;
-                }
+            else {
 
-                else {
-
-                    throw new NumberFormatException("msisdn length is below 10 characters !") ;
-                }
-
+                throw new NumberFormatException("msisdn length is below 10 characters !") ;
             }
         }
 
-        return msisdn ;
+        return null ;
     }
 
     /**
@@ -84,5 +80,22 @@ public class PhoneNumberUtils {
         }
 
         return msisdn;
+    }
+
+    public static String removeWhiteSpaces(String source) {
+
+        char[] strArray = source.toCharArray();
+
+        StringBuffer sb = new StringBuffer();
+
+        for (int i = 0; i < strArray.length; i++)
+        {
+            if( (strArray[i] != ' ') && (strArray[i] != '\t') )
+            {
+                sb.append(strArray[i]);
+            }
+        }
+
+        return sb.toString() ;
     }
 }
