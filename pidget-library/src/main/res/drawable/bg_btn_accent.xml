@@ -5,6 +5,8 @@
         android:state_pressed="true"
         android:drawable="@drawable/rect_roundcorner_rippled_alt" />
 
-    <item android:drawable="@drawable/rect_roundcorner_accent"/>
+    <item
+        android:state_pressed="false"
+        android:drawable="@drawable/rect_roundcorner_accent"/>
 
 </selector>
