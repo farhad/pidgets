@@ -44,7 +44,7 @@ public class PhoneNumberUtils {
     {
         if(!TextUtils.isEmpty(msisdn) && TextUtils.isDigitsOnly(msisdn)){
 
-            String output = formatToIranMsisdnPattern(removeWhiteSpaces(msisdn).trim());
+            String output = removeIllegalCharacters(msisdn).trim();
 
             if(output.length() == 11) {
                 return output ;
@@ -82,7 +82,7 @@ public class PhoneNumberUtils {
         return msisdn;
     }
 
-    public static String removeWhiteSpaces(String source) {
+    public static String removeIllegalCharacters(String source) {
 
         char[] strArray = source.toCharArray();
 
@@ -90,7 +90,7 @@ public class PhoneNumberUtils {
 
         for (int i = 0; i < strArray.length; i++)
         {
-            if( (strArray[i] != ' ') && (strArray[i] != '\t') )
+            if( (strArray[i] != ' ') && (strArray[i] != '\t') && (strArray[i] != '+') )
             {
                 sb.append(strArray[i]);
             }
