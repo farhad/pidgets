@@ -49,8 +49,15 @@ public class PhoneNumberUtils {
             if(output.length() == 11) {
                 return output ;
             }
-            else if(!output.startsWith("0") && output.length() == 10) {
-                return "0" + output ;
+
+            else if(output.startsWith("98") && output.length() == 12) {
+
+                return "0" + output.substring(2) ;
+            }
+
+            else if(output.startsWith("0098") && output.length() == 14) {
+
+                return "0" + output.substring(4) ;
             }
 
             else {
