@@ -8,14 +8,43 @@ import android.text.TextUtils;
 
 public class PhoneNumberUtils {
 
-    /**
-     * removes the '+' , '98' and '0098' from the cellphone number
-     * @param msisdn
-     * @return
-     */
+    public static String formatToIranMsisdnPattern(String msisdn)
+    {
+        return fixNumberFormat(msisdn) ;
+    }
+
+    private static String fixNumberFormat(String input)
+    {
+        String msisdn = removeInvalidCharacters(input) ;
+
+        if(!TextUtils.isEmpty(msisdn)
+                && TextUtils.isDigitsOnly(msisdn)
+                && msisdn.length() >= 10)
+        {
+            msisdn = removeIntlCodeFromMsisdn(msisdn) ;
+
+            if(msisdn.startsWith("9") && msisdn.length() == 10)
+                return "0" + msisdn ;
+
+            else if(msisdn.startsWith("09") && msisdn.length() == 11)
+                return msisdn ;
+
+            else if(msisdn.startsWith("98") && msisdn.length() == 12)
+                return "0" + msisdn.substring(2) ;
+
+            else if(msisdn.startsWith("0098") && msisdn.length() == 14)
+                return "0" + msisdn.substring(4) ;
+
+            else
+                return null ;
+        }
+
+        return null ;
+    }
+
     public static String removeIntlCodeFromMsisdn(String msisdn)
     {
-        if (!TextUtils.isEmpty(msisdn)) {
+        if (!TextUtils.isEmpty(msisdn) && TextUtils.isDigitsOnly(msisdn)) {
 
             if (msisdn.startsWith("+")) {
                 return msisdn.substring(1);
@@ -34,72 +63,17 @@ public class PhoneNumberUtils {
         return msisdn;
     }
 
-    /**
-     *
-     * @param msisdn
-     * @return
-     * @throws NumberFormatException
-     */
-    public static String formatToIranMsisdnPattern(String msisdn)
-    {
-        if(!TextUtils.isEmpty(msisdn) && TextUtils.isDigitsOnly(msisdn)){
-
-            String output = removeIllegalCharacters(msisdn).trim();
-
-            if(output.length() == 11) {
-                return output ;
-            }
-
-            else if(output.startsWith("98") && output.length() == 12) {
-
-                return "0" + output.substring(2) ;
-            }
-
-            else if(output.startsWith("0098") && output.length() == 14) {
-
-                return "0" + output.substring(4) ;
-            }
-
-            else {
-
-                throw new NumberFormatException("msisdn length is below 10 characters !") ;
-            }
-        }
-
-        return null ;
-    }
-
-    /**
-     * returns the hashed msisdn of length 7 and more, for display
-     * sample output for 09123456789 is 0912***6789
-     * @param msisdn
-     * @return
-     */
-    public static String getHashedMsisdnForDisplay(String msisdn)
-    {
-        if (!TextUtils.isEmpty(msisdn)
-                && TextUtils.isDigitsOnly(msisdn)) {
-
-            if(msisdn.length() > 7) {
-
-                return msisdn.substring(0, 4) + "***" + msisdn.substring(7);
-            }
-        }
-
-        return msisdn;
-    }
-
-    public static String removeIllegalCharacters(String source) {
+    public static String removeInvalidCharacters(String source) {
 
         char[] strArray = source.toCharArray();
 
         StringBuffer sb = new StringBuffer();
 
-        for (int i = 0; i < strArray.length; i++)
+        for (char item : strArray)
         {
-            if( (strArray[i] != ' ') && (strArray[i] != '\t') && (strArray[i] != '+') )
+            if (TextUtils.isDigitsOnly(String.valueOf(item)))
             {
-                sb.append(strArray[i]);
+                sb.append(item);
             }
         }
 
