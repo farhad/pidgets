@@ -3,6 +3,7 @@ package ir.jibmib.pidgets.widget;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.InputFilter;
@@ -111,4 +112,13 @@ public class ParsiEditText extends AppCompatEditText {
         }
     }
 
+    @Override
+    protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
+        super.onFocusChanged(focused, direction, previouslyFocusedRect);
+
+        if(focused && getText() != null)
+        {
+            setSelection(getText().length());
+        }
+    }
 }
