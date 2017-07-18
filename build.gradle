@@ -30,9 +30,9 @@ ext {
     vTargetSdk = 25
     vCompileSdk = 25
 
-    vMajor = 1
-    vMinor = 9
-    vPatch = 9
+    vMajor = 2
+    vMinor = 0
+    vPatch = 0
 
     pidgetLibVersionCode = vMajor*100 + vMinor*10 + vPatch
     pidgetLibVersionName = "${vMajor}.${vMinor}.${vPatch}"
