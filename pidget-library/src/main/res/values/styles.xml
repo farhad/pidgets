@@ -78,6 +78,7 @@
 
     <style name="EditTextMedium">
         <item name="android:layout_width">match_parent</item>
+        <item name="android:textDirection">ltr</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">right|center_vertical</item>
         <item name="android:padding">@dimen/padding_small</item>
@@ -121,6 +122,7 @@
 
     <style name="EditTextMediumNoMarginWhiteRegular">
         <item name="hideBottomLine">true</item>
+        <item name="android:textDirection">ltr</item>
         <item name="replaceWithPersianDigits">true</item>
         <item name="fontAdapterType">regular</item>
         <item name="android:layout_width">wrap_content</item>
