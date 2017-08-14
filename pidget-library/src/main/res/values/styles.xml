@@ -141,6 +141,7 @@
     <style name="PhoneNumberEditTextMediumBold" parent="EditTextMediumNoMarginWhiteBold">
         <item name="android:inputType">phone</item>
         <item name="android:maxLength">11</item>
+        <item name="android:digits">0123456789</item>
         <item name="android:hint">@string/pidget_hint_edittext_phonenumber</item>
     </style>
 
