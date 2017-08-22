@@ -6,7 +6,6 @@ import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatEditText;
-import android.text.InputFilter;
 import android.util.AttributeSet;
 
 import ir.jibmib.pidgets.R;
@@ -19,8 +18,7 @@ public class ParsiEditText extends AppCompatEditText {
     private boolean shouldReplaceWithParsiDigits;
     private FontType fontType;
     private boolean shouldHideBottomLine;
-
-    private InputFilter inputFilter ;
+    private OnTextEventListener eventListener ;
 
     public ParsiEditText(Context context) {
         super(context);
@@ -120,5 +118,51 @@ public class ParsiEditText extends AppCompatEditText {
         {
             setSelection(getText().length());
         }
+    }
+
+    @Override
+    public boolean onTextContextMenuItem(int id) {
+
+        boolean consumed = super.onTextContextMenuItem(id);
+
+        switch (id){
+            case android.R.id.cut:
+            {
+                if(eventListener != null)
+                    eventListener.onCut();
+                break;
+            }
+            case android.R.id.copy:
+            {
+                if(eventListener != null)
+                    eventListener.onCopy();
+
+                break;
+            }
+
+            case android.R.id.paste:
+            {
+                if(eventListener != null)
+                    eventListener.onPaste();
+            }
+        }
+        return consumed;
+    }
+
+    public OnTextEventListener getEventListener() {
+        return eventListener;
+    }
+
+    public void setEventListener(OnTextEventListener eventListener) {
+        this.eventListener = eventListener;
+    }
+
+    public interface OnTextEventListener
+    {
+        void onCut() ;
+
+        void onPaste() ;
+
+        void onCopy() ;
     }
 }
