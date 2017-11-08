@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.0'
     }
 }
 
@@ -25,7 +25,7 @@ task clean(type: Delete) {
 
 ext {
 
-    vBuildTools = "26.0.0"
+    vBuildTools = "27.0.0"
     vMinSdk = 15
     vTargetSdk = 25
     vCompileSdk = 25
@@ -38,7 +38,7 @@ ext {
     pidgetLibVersionName = "${vMajor}.${vMinor}.${vPatch}"
 
     supportPackage = "com.android.support"
-    vSupportLibrary = "25.4.0"
+    vSupportLibrary = "26.1.0"
 
     dependencies = [
 
