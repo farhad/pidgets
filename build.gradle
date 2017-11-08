@@ -27,8 +27,8 @@ ext {
 
     vBuildTools = "27.0.0"
     vMinSdk = 15
-    vTargetSdk = 25
-    vCompileSdk = 25
+    vTargetSdk = 26
+    vCompileSdk = 26
 
     vMajor = 2
     vMinor = 0

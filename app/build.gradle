@@ -13,6 +13,8 @@ android {
 
         versionCode         configs.vMajor*100 + configs.vMinor*10 + configs.vPatch
         versionName         "$configs.vMajor.$configs.vMinor.$configs.vPatch"
+
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
