@@ -1,1 +1,1 @@
-include ':app', ':pidget-library'
+include ':app', ':lib'
