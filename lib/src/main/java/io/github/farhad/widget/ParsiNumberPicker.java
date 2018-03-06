@@ -1,4 +1,4 @@
-package ir.jibmib.pidgets.widget;
+package io.github.farhad.widget;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import ir.jibmib.pidgets.font.FontAdapter;
+import io.github.farhad.font.FontAdapter;
 
 /**
  * Created by farhad on 9/16/16.

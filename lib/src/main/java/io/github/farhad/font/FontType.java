@@ -1,4 +1,4 @@
-package ir.jibmib.pidgets.font;
+package io.github.farhad.font;
 
 /**
  * Created by farhad on 12/18/16.

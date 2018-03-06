@@ -1,13 +1,13 @@
-package io.github.jibmib;
+package ir.farhadfaghihi;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import ir.jibmib.pidgets.utils.MonetaryTextWatcher;
-import ir.jibmib.pidgets.widget.ParsiButton;
-import ir.jibmib.pidgets.widget.ParsiEditText;
+import io.github.farhad.utils.MonetaryTextWatcher;
+import io.github.farhad.widget.ParsiButton;
+import io.github.farhad.widget.ParsiEditText;
 
 public class MainActivity extends Activity {
 

@@ -1,4 +1,4 @@
-package ir.jibmib.pidgets.utils;
+package io.github.farhad.utils;
 
 import android.app.Activity;
 import android.app.ActivityManager;

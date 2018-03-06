@@ -7,7 +7,7 @@ android {
     buildToolsVersion       configs.vBuildTools
 
     defaultConfig {
-        applicationId       "io.github.jibmib"
+        applicationId       "ir.farhadfaghihi"
         minSdkVersion       configs.vMinSdk
         targetSdkVersion    configs.vTargetSdk
 

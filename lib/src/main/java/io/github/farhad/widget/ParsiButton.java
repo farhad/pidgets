@@ -1,74 +1,72 @@
-package ir.jibmib.pidgets.widget;
+package io.github.farhad.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v7.widget.AppCompatCheckBox;
+import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 
 import ir.jibmib.pidgets.R;
-import ir.jibmib.pidgets.font.FontAdapter;
-import ir.jibmib.pidgets.font.FontType;
-import ir.jibmib.pidgets.parsi.ParsiUtils;
-import ir.jibmib.pidgets.utils.Utils;
+import io.github.farhad.font.FontAdapter;
+import io.github.farhad.font.FontType;
+import io.github.farhad.parsi.ParsiUtils;
+import io.github.farhad.utils.Utils;
 
 /**
- * Created by haniyeh on 08/07/16.
+ * Created by farhad on 12/20/16.
  */
-public class ParsiCheckBox extends AppCompatCheckBox {
 
-    private boolean shouldReplaceWithParsiDigits;
-    private FontType fontType;
+public class ParsiButton extends AppCompatButton {
 
-    public ParsiCheckBox(Context context) {
+    private boolean  shouldReplaceWithParsiDigits;
+    private FontType fontType ;
+
+    public ParsiButton(Context context) {
         super(context);
 
         init(context);
     }
 
-    public ParsiCheckBox(Context context, AttributeSet attrs) {
+    public ParsiButton(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         init(context,attrs);
     }
 
-    public ParsiCheckBox(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ParsiButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         init(context,attrs);
     }
 
     @Override
-    public void setText(CharSequence text, BufferType type)
-    {
-        if(!isInEditMode()){
+    public void setText(CharSequence text, BufferType type) {
+
+        if (!isInEditMode()) {
 
             if (shouldReplaceWithParsiDigits && Utils.containsDigits(text.toString())) {
 
                 super.setText(ParsiUtils.replaceWithParsiDigits(text.toString()), type);
+
             } else {
 
                 super.setText(text, type);
-
-                requestLayout();
             }
+        } else {
+            super.setText(text, type);
         }
 
-        else {
-
-            super.setText(text,type);
-
-            requestLayout();
-        }
+        requestLayout();
     }
+
 
     private void init(Context context){
 
         if(!isInEditMode()){
 
-            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiCheckBox);
+            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiButton) ;
 
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiCheckBox_replaceWithPersianDigits, true);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiCheckBox_fontAdapterType, 0));
+            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiButton_replaceWithPersianDigits,true) ;
+            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiButton_fontAdapterType,0)) ;
 
             typedArray.recycle();
 
@@ -82,10 +80,10 @@ public class ParsiCheckBox extends AppCompatCheckBox {
 
         if(!isInEditMode()){
 
-            TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiTextView, 0, 0);
+            TypedArray typedArray = context.obtainStyledAttributes(attributeSet,R.styleable.ParsiButton,0,0) ;
 
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiCheckBox_replaceWithPersianDigits, true);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiCheckBox_fontAdapterType, 0));
+            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiButton_replaceWithPersianDigits,true) ;
+            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiButton_fontAdapterType,0)) ;
 
             typedArray.recycle();
 
@@ -93,9 +91,11 @@ public class ParsiCheckBox extends AppCompatCheckBox {
         }
 
         requestLayout();
+
     }
 
-    public boolean isShouldReplaceWithParsiDigits() {
+
+    public boolean shouldReplaceWithParsiDigits() {
         return shouldReplaceWithParsiDigits;
     }
 
