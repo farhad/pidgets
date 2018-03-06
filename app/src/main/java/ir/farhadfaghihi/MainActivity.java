@@ -16,7 +16,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ParsiEditText editText = (ParsiEditText)findViewById(R.id.etVerifyCode) ;
+        final ParsiEditText editText = (ParsiEditText)findViewById(R.id.et) ;
 
         editText.addTextChangedListener(new MonetaryTextWatcher(editText));
 
