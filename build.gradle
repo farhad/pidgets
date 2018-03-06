@@ -26,14 +26,14 @@ task clean(type: Delete) {
 
 ext {
 
-    vBuildTools = "27.0.0"
+    vBuildTools = "27.0.3"
     vMinSdk = 15
     vTargetSdk = 26
     vCompileSdk = 26
 
     vMajor = 2
-    vMinor = 0
-    vPatch = 7
+    vMinor = 1
+    vPatch = 0
 
     pidgetLibVersionCode = vMajor*100 + vMinor*10 + vPatch
     pidgetLibVersionName = "${vMajor}.${vMinor}.${vPatch}"
@@ -45,7 +45,7 @@ ext {
 
             appcompat   : "$supportPackage:appcompat-v7:$vSupportLibrary" ,
             design      : "$supportPackage:design:$vSupportLibrary" ,
-            pidgets     : "com.github.jibmib:pidgets:v1.9.1"
+            pidgets     : "io.github.farhad:pidgets:v{$vMajor}.{$vMinor}.{$vPatch}"
     ]
 }
 
