@@ -1,4 +1,4 @@
-package ir.jibmib.pidgets.parsi;
+package io.github.farhad.parsi;
 
 public class ParsiReshape {
 

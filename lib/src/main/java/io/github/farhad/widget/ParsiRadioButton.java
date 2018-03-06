@@ -1,14 +1,14 @@
-package ir.jibmib.pidgets.widget;
+package io.github.farhad.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.AppCompatRadioButton;
 import android.util.AttributeSet;
 import ir.jibmib.pidgets.R;
-import ir.jibmib.pidgets.font.FontAdapter;
-import ir.jibmib.pidgets.font.FontType;
-import ir.jibmib.pidgets.parsi.ParsiUtils;
-import ir.jibmib.pidgets.utils.Utils;
+import io.github.farhad.font.FontAdapter;
+import io.github.farhad.font.FontType;
+import io.github.farhad.parsi.ParsiUtils;
+import io.github.farhad.utils.Utils;
 
 /**
  * Created by haniyeh on 08/07/16.

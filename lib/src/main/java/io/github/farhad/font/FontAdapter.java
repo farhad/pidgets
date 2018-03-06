@@ -1,4 +1,4 @@
-package ir.jibmib.pidgets.font;
+package io.github.farhad.font;
 
 import android.content.Context;
 import android.graphics.Typeface;

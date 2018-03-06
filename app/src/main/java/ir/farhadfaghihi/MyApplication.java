@@ -1,8 +1,8 @@
-package io.github.jibmib;
+package ir.farhadfaghihi;
 
 import android.app.Application;
 
-import ir.jibmib.pidgets.font.FontAdapter;
+import io.github.farhad.font.FontAdapter;
 
 /**
  * Created by farhad on 1/22/17.

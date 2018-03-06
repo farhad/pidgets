@@ -1,4 +1,4 @@
-package ir.jibmib.pidgets.parsi;
+package io.github.farhad.parsi;
 
 /**
  * Created by Farhad on 11/9/2015.

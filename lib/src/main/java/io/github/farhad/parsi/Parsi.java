@@ -1,4 +1,4 @@
-package ir.jibmib.pidgets.parsi;
+package io.github.farhad.parsi;
 
 @SuppressWarnings("unused")
 public final class Parsi {
