@@ -7,7 +7,7 @@ android {
     buildToolsVersion       configs.vBuildTools
 
     defaultConfig {
-        applicationId       "io.github.jibmib"
+        applicationId       "ir.farhadfaghihi"
         minSdkVersion       configs.vMinSdk
         targetSdkVersion    configs.vTargetSdk
 
@@ -29,5 +29,5 @@ dependencies {
     Map<String, String> depMap = configs.dependencies
     compile depMap.appcompat
     compile depMap.design
-    compile project(':pidget-library')
+    compile project(':lib')
 }
