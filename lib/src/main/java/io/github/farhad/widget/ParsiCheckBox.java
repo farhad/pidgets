@@ -6,9 +6,9 @@ import android.support.v7.widget.AppCompatCheckBox;
 import android.util.AttributeSet;
 
 import io.github.farhad.R;
-import io.github.farhad.font.FontAdapter;
-import io.github.farhad.font.FontType;
-import io.github.farhad.parsi.ParsiUtils;
+import io.github.farhad.typeface.ParsiTypeface;
+import io.github.farhad.typeface.FontType;
+import io.github.farhad.utils.ParsiUtils;
 import io.github.farhad.utils.Utils;
 
 /**
@@ -72,7 +72,7 @@ public class ParsiCheckBox extends AppCompatCheckBox {
 
             typedArray.recycle();
 
-            setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
+            setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(fontType));
         }
 
         requestLayout();
@@ -89,7 +89,7 @@ public class ParsiCheckBox extends AppCompatCheckBox {
 
             typedArray.recycle();
 
-            setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
+            setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(fontType));
         }
 
         requestLayout();

@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import io.github.farhad.font.FontAdapter;
+import io.github.farhad.typeface.ParsiTypeface;
 
 /**
  * Created by farhad on 9/16/16.
@@ -70,7 +70,7 @@ public class ParsiNumberPicker extends NumberPicker {
     {
         if(view instanceof TextView)
         {
-            ((TextView)view).setTypeface(FontAdapter.getInstance(getContext()).getTypefaceRegular());
+            ((TextView)view).setTypeface(ParsiTypeface.getInstance().getRegular());
             ((TextView)view).setTextSize(18);
         }
 

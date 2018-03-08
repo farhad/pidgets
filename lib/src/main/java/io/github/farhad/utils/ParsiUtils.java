@@ -1,4 +1,4 @@
-package io.github.farhad.parsi;
+package io.github.farhad.utils;
 
 /**
  * Created by Farhad on 11/9/2015.

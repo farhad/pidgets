@@ -1,4 +1,4 @@
-package io.github.farhad.font;
+package io.github.farhad.typeface;
 
 /**
  * Created by farhad on 12/18/16.

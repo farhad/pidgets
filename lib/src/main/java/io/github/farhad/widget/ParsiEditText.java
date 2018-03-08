@@ -8,8 +8,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import io.github.farhad.R;
-import io.github.farhad.font.FontAdapter;
-import io.github.farhad.font.FontType;
+import io.github.farhad.typeface.ParsiTypeface;
+import io.github.farhad.typeface.FontType;
 
 
 public class ParsiEditText extends AppCompatEditText {
@@ -72,7 +72,7 @@ public class ParsiEditText extends AppCompatEditText {
         fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));
         shouldHideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, true);
 
-        setTypeface(FontAdapter.getInstance(context).getMatchingTypeface(fontType));
+        setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(fontType));
 
         if (shouldHideBottomLine) {
             getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
