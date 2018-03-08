@@ -273,11 +273,6 @@ public final class Parsi {
         return ArabicReverse(Convert(In));
     }
 
-    /**
-     * Correct every string in persian language for 2.3 android version and lower
-     * @param In Input string parameter
-     * @return
-     */
     public static final String Convert(String In) {
 
         if (!isFarsiConversionNeeded) {

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.AppCompatRadioButton;
 import android.util.AttributeSet;
-import ir.jibmib.pidgets.R;
+import io.github.farhad.R;
 import io.github.farhad.font.FontAdapter;
 import io.github.farhad.font.FontType;
 import io.github.farhad.parsi.ParsiUtils;

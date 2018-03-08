@@ -3,9 +3,6 @@ package io.github.farhad.font;
 import android.content.Context;
 import android.graphics.Typeface;
 
-/**
- * Created by root on 6/10/16.
- */
 public class FontAdapter {
 
     private static Typeface typefaceRegular;
@@ -28,13 +25,6 @@ public class FontAdapter {
         return instance;
     }
 
-    /**
-     * The path to regular font file in the assets folder
-     * e.g : "fonts/regular.ttf"
-     *
-     * @param pathToRegularFont
-     * @return
-     */
     public FontAdapter regular(String pathToRegularFont) {
 
         typefaceRegular = getTypeface(pathToRegularFont);
@@ -42,13 +32,6 @@ public class FontAdapter {
         return instance;
     }
 
-    /**
-     * The path to semi-bold font in the assets folder
-     * e.g : "fonts/semibold.ttf"
-     *
-     * @param pathToSemiBoldFont
-     * @return
-     */
     public FontAdapter semiBold(String pathToSemiBoldFont) {
 
         typefaceSemiBold = getTypeface(pathToSemiBoldFont);
@@ -56,13 +39,6 @@ public class FontAdapter {
         return instance;
     }
 
-    /**
-     * The path to bold font file in the assets folder
-     * e.g : "fonts/bold.ttf"
-     *
-     * @param pathToBoldFont
-     * @return
-     */
     public FontAdapter bold(String pathToBoldFont) {
 
         typefaceBold = getTypeface(pathToBoldFont);
@@ -70,13 +46,6 @@ public class FontAdapter {
         return instance;
     }
 
-    /**
-     * The path to italic font file in the assets folder
-     * e.g : "fonts/italic.ttf"
-     *
-     * @param pathToItalicFont
-     * @return
-     */
     public FontAdapter italic(String pathToItalicFont) {
 
         typefaceItalic = getTypeface(pathToItalicFont);

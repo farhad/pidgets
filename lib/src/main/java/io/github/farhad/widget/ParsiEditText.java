@@ -7,8 +7,7 @@ import android.graphics.Rect;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
-
-import ir.jibmib.pidgets.R;
+import io.github.farhad.R;
 import io.github.farhad.font.FontAdapter;
 import io.github.farhad.font.FontType;
 
