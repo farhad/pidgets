@@ -15,4 +15,4 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
--keep public class ir.jibmib.pidgets** { public *;}
+-keep public class io.github.farhad.** { public *;}
