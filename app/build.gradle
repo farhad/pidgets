@@ -25,9 +25,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     Map<String, String> depMap = configs.dependencies
-    compile depMap.appcompat
-    compile depMap.design
-    compile project(':lib')
+    implementation depMap.appcompat
+    implementation depMap.design
+    implementation project(':lib')
 }
