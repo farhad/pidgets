@@ -29,5 +29,6 @@ dependencies {
     Map<String, String> depMap = configs.dependencies
     implementation depMap.appcompat
     implementation depMap.design
-    implementation project(':lib')
+//    implementation depMap.pidgets
+    implementation project(':pidgets')
 }
