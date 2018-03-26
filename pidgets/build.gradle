@@ -36,4 +36,30 @@ dependencies {
     implementation depMap.design
 }
 
-apply from: 'https://raw.github.com/nisrulz/gradle-mvn-push/master/gradle-mvn-push.gradle'
+ext
+{
+    bintrayRepo = 'maven'
+    bintrayName = 'pidgets' //the name you want to give at your project on bintray
+    orgName = 'farhad' //your user name
+
+    publishedGroupId = 'io.github.farhad'
+    artifact = 'pidgets'
+    libraryVersion = configs.pidgetLibVersionName //the librairy version
+
+    libraryName = 'pidgets'
+    libraryDescription = 'hand-crafted Persian language supporting widgets and utilites for Android'
+
+    siteUrl = 'https://github.com/farhad/pidgets'
+    gitUrl = 'https://github.com/farhad/pidgets.git'
+
+    developerId = 'farhad'
+    developerName = 'Farhad Faghihi'
+    developerEmail = 'ifarhadfaghihi@gmail.com'
+
+    licenseName = 'GNU General Public License v3.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["GPL-3.0"]
+}
+
+apply from: rootProject.file('gradle/install.gradle')
+apply from: rootProject.file('gradle/bintray-android.gradle')
