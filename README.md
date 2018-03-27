@@ -1,6 +1,6 @@
 
 
-[![Download](https://api.bintray.com/packages/farhad/maven/pidgets/images/download.svg)](https://bintray.com/farhad/maven/pidgets/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/farhad/pidgets.svg)](https://github.com/farhad/pidgets/releases)  
+[![Download](https://api.bintray.com/packages/farhad/maven/pidgets/images/download.svg)](https://bintray.com/farhad/maven/pidgets/_latestVersion)
 
 The purpose of the `Pidgets` project, is to make the life of Android developers easier, by providing widgets and utilities for day-to-day routine tasks,
 so that she can save time and focus on the core problem.
