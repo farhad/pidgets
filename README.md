@@ -1,7 +1,9 @@
-![Maven metadata URI](https://img.shields.io/maven-metadata/v/http/jcenter.bintray.com/io/github/farhad/pidgets/maven-metadata.xml.svg)
 
-The main purpose of the `Pidgets` project, is to make the life of Android developers more convenient, by providing widgets and utilities for routine day to day tasks,
-so that the developer can save time and focus on the core problem or requirement.
+
+[![Download](https://api.bintray.com/packages/farhad/maven/pidgets/images/download.svg)](https://bintray.com/farhad/maven/pidgets/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/farhad/pidgets.svg)](https://github.com/farhad/pidgets/releases)  
+
+The purpose of the `Pidgets` project, is to make the life of Android developers easier, by providing widgets and utilities for day-to-day routine tasks,
+so that she can save time and focus on the core problem.
 
 ## Download
 ```groovy
