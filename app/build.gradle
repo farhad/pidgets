@@ -34,6 +34,6 @@ dependencies {
     Map<String, String> depMap = configs.dependencies
     implementation depMap.appcompat
     implementation depMap.design
-//    implementation depMap.pidgets
-    implementation project(':pidgets')
+    implementation depMap.pidgets
+//    implementation project(':pidgets')
 }
