@@ -1,6 +1,4 @@
-#Pidgets
-
-![Maven metadata URI](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/io/github/farhad/pidgets/2.1.0/maven-metadata.xml.svg)
+![Maven metadata URI](https://img.shields.io/maven-metadata/v/http/jcenter.bintray.com/io/github/farhad/pidgets/maven-metadata.xml.svg)
 
 The main purpose of the `Pidgets` project, is to make the life of Android developers more convenient, by providing widgets and utilities for routine day to day tasks,
 so that the developer can save time and focus on the core problem or requirement.
