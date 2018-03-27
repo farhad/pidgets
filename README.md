@@ -1,31 +1,31 @@
-# Pidgets
+#Pidgets
 
-[![](https://jitpack.io/v/jibmib/pidgets.svg)](https://jitpack.io/#jibmib/pidgets)
+![Maven metadata URI](https://img.shields.io/maven-metadata/v/http/central.maven.org/maven2/io/github/farhad/pidgets/2.1.0/maven-metadata.xml.svg)
 
-Project Pidgets is going to provide a set of crafted Persian language supporting widgets and some other utitlity tools, to help make Android development more productive. The project is still under development and new tools are going to be added in the upcoming days.
+The main purpose of the `Pidgets` project, is to make the life of Android developers more convenient, by providing widgets and utilities for routine day to day tasks,
+so that the developer can save time and focus on the core problem or requirement.
 
-### Adding Pidgets to your Project
-
-Add the Jitpack.io Maven Repository to the build.gradle :
-
+## Download
+```groovy
+implementation 'io.github.farhad:pidgets:2.1.0'
 ```
 
-repositories {
+License
+=======
 
-    maven { 
-        url 'https://jitpack.io'
-    }
-}
-  
-```
+    hand-crafted Persian language-supporting Android widgets and utilities
+    
+    Copyright (C) 2016  Farhad Faghihi
 
-Then add the pidgets dependency :
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
 
-```
-compile    'com.github.jibmib:pidgets:v2.0.7'
-  
-```
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 
-## Authors
-
-* [Farhad Faghihi](https://github.com/farhadfaghihi)
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
