@@ -2,49 +2,48 @@
 
 <resources>
 
-    <attr name="replaceWithPersianDigits" format="boolean" />
+    <attr name="useParsiDigits" format="boolean" />
 
-    <attr name="fontAdapterType" format="enum">
+    <attr name="typefaceStyle" format="enum">
         <enum name="regular" value="0" />
-        <enum name="semibold" value="1" />
+        <enum name="semiBold" value="1" />
         <enum name="bold" value="2" />
         <enum name="italic" value="3" />
     </attr>
 
     <declare-styleable name="ParsiTextView">
-
-        <attr name="replaceWithPersianDigits" />
-        <attr name="fontAdapterType" />
+        
+        <attr name="useParsiDigits"/>
+        <attr name="typefaceStyle" />
 
     </declare-styleable>
 
     <declare-styleable name="ParsiButton">
 
-        <attr name="replaceWithPersianDigits" />
-        <attr name="fontAdapterType" />
+        <attr name="useParsiDigits" />
+        <attr name="typefaceStyle" />
 
     </declare-styleable>
 
     <declare-styleable name="ParsiEditText">
 
-        <attr name="replaceWithPersianDigits" />
-        <attr name="fontAdapterType" />
-
+        <attr name="useParsiDigits" />
+        <attr name="typefaceStyle" />
         <attr name="hideBottomLine" format="boolean" />
 
     </declare-styleable>
 
     <declare-styleable name="ParsiCheckBox">
 
-        <attr name="replaceWithPersianDigits" />
-        <attr name="fontAdapterType" />
+        <attr name="useParsiDigits" />
+        <attr name="typefaceStyle" />
 
     </declare-styleable>
 
     <declare-styleable name="ParsiRadioButton">
 
-        <attr name="replaceWithPersianDigits" />
-        <attr name="fontAdapterType" />
+        <attr name="useParsiDigits" />
+        <attr name="typefaceStyle" />
 
     </declare-styleable>
 

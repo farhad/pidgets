@@ -68,8 +68,8 @@ public class ParsiRadioButton extends AppCompatRadioButton {
 
             TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiRadioButton);
 
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiRadioButton_replaceWithPersianDigits, true);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiRadioButton_fontAdapterType, 0));
+            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiRadioButton_useParsiDigits, true);
+            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiRadioButton_typefaceStyle, 0));
 
             typedArray.recycle();
 
@@ -85,8 +85,8 @@ public class ParsiRadioButton extends AppCompatRadioButton {
 
             TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiRadioButton, 0, 0);
 
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiRadioButton_replaceWithPersianDigits, true);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiRadioButton_fontAdapterType, 0));
+            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiRadioButton_useParsiDigits, true);
+            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiRadioButton_typefaceStyle, 0));
 
             typedArray.recycle();
 

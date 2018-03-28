@@ -68,8 +68,8 @@ public class ParsiEditText extends AppCompatEditText {
 
     private void initialize(Context context ,TypedArray typedArray){
 
-        shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_replaceWithPersianDigits, true);
-        fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_fontAdapterType, 0));
+        shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_useParsiDigits, true);
+        fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_typefaceStyle, 0));
         shouldHideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, true);
 
         setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(fontType));
