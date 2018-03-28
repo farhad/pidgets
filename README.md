@@ -2,8 +2,8 @@
 
 [![Download](https://api.bintray.com/packages/farhad/maven/pidgets/images/download.svg)](https://bintray.com/farhad/maven/pidgets/_latestVersion)
 
-The purpose of the `Pidgets` project, is to make the life of Android developers easier, by providing widgets and utilities for day-to-day routine tasks,
-so that she can save time and focus on the core problem.
+The purpose of the `Pidgets` project is to provide resuable widgets and utilities for day-to-day routine tasks,
+so that we can save time and focus on the core problem.
 
 ## Download
 ```groovy
@@ -13,8 +13,6 @@ implementation 'io.github.farhad:pidgets:2.1.0'
 License
 =======
 
-    hand-crafted Persian language-supporting Android widgets and utilities
-    
     Copyright (C) 2016  Farhad Faghihi
 
     This program is free software: you can redistribute it and/or modify
