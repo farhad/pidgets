@@ -10,14 +10,15 @@ import android.util.AttributeSet;
 import io.github.farhad.R;
 import io.github.farhad.typeface.ParsiTypeface;
 import io.github.farhad.typeface.FontType;
+import io.github.farhad.utils.Utils;
+import io.github.farhad.utils.parsi.ParsiUtils;
 
 
 public class ParsiEditText extends AppCompatEditText {
 
-    private boolean shouldReplaceWithParsiDigits;
-    private FontType fontType;
-    private boolean shouldHideBottomLine;
-    private OnTextEventListener eventListener ;
+    private boolean useParsiDigits;
+    private FontType typefaceStyle;
+    private boolean hideBottomLine;
 
     public ParsiEditText(Context context) {
         super(context);
@@ -37,7 +38,6 @@ public class ParsiEditText extends AppCompatEditText {
         init(context, attrs , defStyleAttr);
     }
 
-
     private void init(Context context) {
 
         TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiEditText);
@@ -49,7 +49,7 @@ public class ParsiEditText extends AppCompatEditText {
 
     private void init(Context context, AttributeSet attributeSet) {
 
-        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiEditText, 0, 0);
+        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiEditText);
 
         initialize(context,typedArray);
 
@@ -68,49 +68,23 @@ public class ParsiEditText extends AppCompatEditText {
 
     private void initialize(Context context ,TypedArray typedArray){
 
-        shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_useParsiDigits, true);
-        fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_typefaceStyle, 0));
-        shouldHideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, true);
+        if(!isInEditMode())
+        {
+            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_useParsiDigits, true);
+            typefaceStyle  = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_typefaceStyle, 0));
+            hideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, false);
 
-        setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(fontType));
+            setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));
 
-        if (shouldHideBottomLine) {
-            getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
-        }
-    }
-
-    public boolean shouldReplaceWithParsiDigits() {
-        return shouldReplaceWithParsiDigits;
-    }
-
-    public void setShouldReplaceWithParsiDigits(boolean shouldReplaceWithParsiDigits) {
-        this.shouldReplaceWithParsiDigits = shouldReplaceWithParsiDigits;
-
-    }
-
-    public FontType getFontType() {
-        return fontType;
-    }
-
-    public void setFontType(FontType fontType) {
-        this.fontType = fontType;
-    }
-
-    public boolean shouldHideBottomLine() {
-        return shouldHideBottomLine;
-    }
-
-    public void setShouldHideBottomLine(boolean shouldHideBottomLine) {
-        this.shouldHideBottomLine = shouldHideBottomLine;
-
-        if(shouldHideBottomLine){
-
-            getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
+            if (hideBottomLine) {
+                getBackground().mutate().setColorFilter(ContextCompat.getColor(context, R.color.transparent), PorterDuff.Mode.SRC_ATOP);
+            }
         }
     }
 
     @Override
     protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
+
         super.onFocusChanged(focused, direction, previouslyFocusedRect);
 
         if(focused && getText() != null)
@@ -120,48 +94,42 @@ public class ParsiEditText extends AppCompatEditText {
     }
 
     @Override
-    public boolean onTextContextMenuItem(int id) {
+    public void setText(CharSequence text, BufferType type) {
 
-        boolean consumed = super.onTextContextMenuItem(id);
+        if (useParsiDigits && Utils.containsDigits(text.toString()))
+            super.setText(ParsiUtils.replaceWithParsiDigits(text.toString()), type);
 
-        switch (id){
-            case android.R.id.cut:
-            {
-                if(eventListener != null)
-                    eventListener.onCut();
-                break;
-            }
-            case android.R.id.copy:
-            {
-                if(eventListener != null)
-                    eventListener.onCopy();
+        else
+            super.setText(text, type);
+    }
 
-                break;
-            }
+    public boolean useParsiDigits() {
+        return useParsiDigits;
+    }
 
-            case android.R.id.paste:
-            {
-                if(eventListener != null)
-                    eventListener.onPaste();
-            }
+    public void setUseParsiDigits(boolean useParsiDigits) {
+        this.useParsiDigits = useParsiDigits;
+
+    }
+
+    public FontType getTypefaceStyle() {
+        return typefaceStyle;
+    }
+
+    public void setTypefaceStyle(FontType typefaceStyle) {
+        this.typefaceStyle = typefaceStyle;
+    }
+
+    public boolean hideBottomLine() {
+        return hideBottomLine;
+    }
+
+    public void setHideBottomLine(boolean hideBottomLine) {
+        this.hideBottomLine = hideBottomLine;
+
+        if(hideBottomLine){
+
+            getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
         }
-        return consumed;
-    }
-
-    public OnTextEventListener getEventListener() {
-        return eventListener;
-    }
-
-    public void setEventListener(OnTextEventListener eventListener) {
-        this.eventListener = eventListener;
-    }
-
-    public interface OnTextEventListener
-    {
-        void onCut() ;
-
-        void onPaste() ;
-
-        void onCopy() ;
     }
 }
