@@ -39,12 +39,12 @@ dependencies {
 ext
 {
     bintrayRepo = 'maven'
-    bintrayName = 'pidgets' //the name you want to give at your project on bintray
-    orgName = 'farhad' //your user name
+    bintrayName = 'pidgets'
+    orgName = 'farhad'
 
     publishedGroupId = 'io.github.farhad'
     artifact = 'pidgets'
-    libraryVersion = configs.pidgetLibVersionName //the librairy version
+    libraryVersion = configs.pidgetLibVersionName
 
     libraryName = 'pidgets'
     libraryDescription = 'hand-crafted Persian language supporting widgets and utilites for Android'
