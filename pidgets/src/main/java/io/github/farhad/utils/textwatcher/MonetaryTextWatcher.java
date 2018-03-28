@@ -1,4 +1,4 @@
-package io.github.farhad.utils;
+package io.github.farhad.utils.textwatcher;
 
 import android.text.Editable;
 import android.text.TextWatcher;

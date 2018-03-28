@@ -1,4 +1,4 @@
-package io.github.farhad.utils;
+package io.github.farhad.utils.parsi;
 
 public class ParsiReshape {
 

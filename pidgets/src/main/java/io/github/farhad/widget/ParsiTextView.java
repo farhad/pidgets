@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import io.github.farhad.R;
 import io.github.farhad.typeface.ParsiTypeface;
 import io.github.farhad.typeface.FontType;
-import io.github.farhad.utils.ParsiUtils;
+import io.github.farhad.utils.parsi.ParsiUtils;
 import io.github.farhad.utils.Utils;
 
 public class ParsiTextView extends AppCompatTextView {
