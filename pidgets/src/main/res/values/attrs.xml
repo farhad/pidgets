@@ -4,6 +4,10 @@
 
     <attr name="useParsiDigits" format="boolean" />
 
+    <attr name="enableManualSwipe" format="boolean"/>
+
+    <attr name="swipeDurationMillis" format="integer"/>
+
     <attr name="typefaceStyle" format="enum">
         <enum name="regular" value="0" />
         <enum name="semiBold" value="1" />
@@ -44,6 +48,13 @@
 
         <attr name="useParsiDigits" />
         <attr name="typefaceStyle" />
+
+    </declare-styleable>
+
+    <declare-styleable name="PidgetsViewPager">
+
+        <attr name="enableManualSwipe" />
+        <attr name="swipeDurationMillis" />
 
     </declare-styleable>
 
