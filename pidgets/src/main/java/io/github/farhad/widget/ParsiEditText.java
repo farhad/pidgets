@@ -118,6 +118,8 @@ public class ParsiEditText extends AppCompatEditText {
 
     public void setTypefaceStyle(FontType typefaceStyle) {
         this.typefaceStyle = typefaceStyle;
+
+        setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));
     }
 
     public boolean hideBottomLine() {
