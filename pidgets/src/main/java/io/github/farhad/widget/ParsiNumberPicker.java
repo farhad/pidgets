@@ -2,28 +2,63 @@ package io.github.farhad.widget;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+
+import io.github.farhad.R;
+import io.github.farhad.typeface.FontType;
 import io.github.farhad.typeface.ParsiTypeface;
 
 /**
  * Created by farhad on 9/16/16.
  */
 public class ParsiNumberPicker extends NumberPicker {
+
+    private FontType typefaceStyle ;
+    private float textSize ;
+
     public ParsiNumberPicker(Context context) {
         super(context);
+
+        TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiNumberPicker) ;
+
+        initialize(context, typedArray);
+
+        typedArray.recycle();
     }
 
     public ParsiNumberPicker(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.ParsiNumberPicker) ;
+
+        initialize(context, typedArray);
+
+        typedArray.recycle();
     }
 
     public ParsiNumberPicker(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+
+        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.ParsiNumberPicker,defStyleAttr,defStyleAttr) ;
+
+        initialize(context, typedArray);
+
+        typedArray.recycle();
+    }
+
+    private void initialize(Context context, TypedArray typedArray)
+    {
+        if(!isInEditMode())
+        {
+            textSize = typedArray.getDimensionPixelSize(R.styleable.ParsiNumberPicker_textSize, 14);
+            typefaceStyle  = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_typefaceStyle, 0));
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -70,8 +105,8 @@ public class ParsiNumberPicker extends NumberPicker {
     {
         if(view instanceof TextView)
         {
-            ((TextView)view).setTypeface(ParsiTypeface.getInstance().getRegular());
-            ((TextView)view).setTextSize(18);
+            ((TextView)view).setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));
+            ((TextView)view).setTextSize(textSize);
         }
 
         requestLayout();

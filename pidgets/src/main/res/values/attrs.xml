@@ -7,6 +7,8 @@
     <attr name="enableManualSwipe" format="boolean"/>
 
     <attr name="swipeDurationMillis" format="integer"/>
+    
+    <attr name="textSize" format="dimension"/>
 
     <attr name="typefaceStyle" format="enum">
         <enum name="regular" value="0" />
@@ -55,6 +57,13 @@
 
         <attr name="enableManualSwipe" />
         <attr name="swipeDurationMillis" />
+
+    </declare-styleable>
+
+    <declare-styleable name="ParsiNumberPicker">
+
+        <attr name="typefaceStyle"/>
+        <attr name="textSize" />
 
     </declare-styleable>
 
