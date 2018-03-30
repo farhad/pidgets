@@ -15,104 +15,75 @@ import io.github.farhad.utils.Utils;
  */
 public class ParsiRadioButton extends AppCompatRadioButton {
 
-    private boolean shouldReplaceWithParsiDigits;
-    private FontType fontType;
-
+    private boolean useParsiDigits;
+    private FontType typefaceStyle;
 
     public ParsiRadioButton(Context context) {
         super(context);
 
-        init(context);
+        TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiRadioButton) ;
+
+        initialize(context, typedArray);
+
+        typedArray.recycle();
     }
 
     public ParsiRadioButton(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        init(context,attrs);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.ParsiRadioButton) ;
+
+        initialize(context,typedArray);
+
+        typedArray.recycle();
     }
 
     public ParsiRadioButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        init(context,attrs);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.ParsiRadioButton,defStyleAttr,defStyleAttr) ;
+
+        initialize(context, typedArray);
+
+        typedArray.recycle();
     }
 
+    private void initialize(Context context,TypedArray typedArray)
+    {
+        if(!isInEditMode()){
 
+            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiRadioButton_useParsiDigits, true);
+            typefaceStyle = FontType.getType(typedArray.getInt(R.styleable.ParsiRadioButton_typefaceStyle, 0));
+
+            typedArray.recycle();
+
+            setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));
+        }
+    }
 
     @Override
     public void setText(CharSequence text, BufferType type)
     {
-        if(!isInEditMode()){
+        if (useParsiDigits && Utils.containsDigits(text.toString()))
+            super.setText(ParsiUtils.replaceWithParsiDigits(text.toString()), type);
 
-            if (shouldReplaceWithParsiDigits && Utils.containsDigits(text.toString())) {
-
-                super.setText(ParsiUtils.replaceWithParsiDigits(text.toString()), type);
-            } else {
-
-                super.setText(text, type);
-            }
-        }
-
-        else {
-
-            super.setText(text,type);
-        }
-
-        requestLayout();
+        else
+            super.setText(text, type);
     }
 
-
-    private void init(Context context){
-
-        if(!isInEditMode()){
-
-            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiRadioButton);
-
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiRadioButton_useParsiDigits, true);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiRadioButton_typefaceStyle, 0));
-
-            typedArray.recycle();
-
-            setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(fontType));
-        }
-
-        requestLayout();
+    public boolean useParsiDigits() {
+        return useParsiDigits;
     }
 
-    private void init(Context context,AttributeSet attributeSet){
-
-        if(!isInEditMode()){
-
-            TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiRadioButton, 0, 0);
-
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiRadioButton_useParsiDigits, true);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiRadioButton_typefaceStyle, 0));
-
-            typedArray.recycle();
-
-            setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(fontType));
-        }
-
-        requestLayout();
+    public void setUseParsiDigits(boolean useParsiDigits) {
+        this.useParsiDigits = useParsiDigits;
     }
 
-    public boolean isShouldReplaceWithParsiDigits() {
-        return shouldReplaceWithParsiDigits;
+    public FontType getTypefaceStyle() {
+        return typefaceStyle;
     }
 
-    public void setShouldReplaceWithParsiDigits(boolean shouldReplaceWithParsiDigits) {
-        this.shouldReplaceWithParsiDigits = shouldReplaceWithParsiDigits;
-
-        requestLayout();
-    }
-
-    public FontType getFontType() {
-        return fontType;
-    }
-
-    public void setFontType(FontType fontType) {
-        this.fontType = fontType;
-
-        requestLayout();
+    public void setTypefaceStyle(FontType typefaceStyle) {
+        this.typefaceStyle = typefaceStyle;
     }
 }
