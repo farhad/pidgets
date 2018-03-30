@@ -16,101 +16,80 @@ import io.github.farhad.utils.Utils;
  */
 public class ParsiCheckBox extends AppCompatCheckBox {
 
-    private boolean shouldReplaceWithParsiDigits;
-    private FontType fontType;
+    private boolean useParsiDigits;
+    private FontType typefaceStyle;
 
     public ParsiCheckBox(Context context) {
         super(context);
 
-        init(context);
+        TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiCheckBox) ;
+
+        init(context,typedArray);
+
+        typedArray.recycle();
     }
 
     public ParsiCheckBox(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        init(context,attrs);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.ParsiCheckBox) ;
+
+        init(context,typedArray);
+
+        typedArray.recycle();
     }
 
     public ParsiCheckBox(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        init(context,attrs);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.ParsiCheckBox,defStyleAttr,defStyleAttr) ;
+
+        init(context,typedArray);
+
+        typedArray.recycle();
+    }
+
+    private void init(Context context,TypedArray typedArray){
+
+        if(!isInEditMode()){
+
+            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiCheckBox_useParsiDigits, true);
+            typefaceStyle = FontType.getType(typedArray.getInt(R.styleable.ParsiCheckBox_typefaceStyle, 0));
+
+            typedArray.recycle();
+
+            setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));
+        }
     }
 
     @Override
     public void setText(CharSequence text, BufferType type)
     {
-        if(!isInEditMode()){
+        if(!isInEditMode()) {
 
-            if (shouldReplaceWithParsiDigits && Utils.containsDigits(text.toString())) {
-
+            if (useParsiDigits && Utils.containsDigits(text.toString()))
                 super.setText(ParsiUtils.replaceWithParsiDigits(text.toString()), type);
-            } else {
-
+            else
                 super.setText(text, type);
-
-                requestLayout();
-            }
-        }
-
-        else {
-
-            super.setText(text,type);
-
-            requestLayout();
         }
     }
 
-    private void init(Context context){
+    public boolean isUseParsiDigits() {
+        return useParsiDigits;
+    }
 
-        if(!isInEditMode()){
-
-            TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiCheckBox);
-
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiCheckBox_useParsiDigits, true);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiCheckBox_typefaceStyle, 0));
-
-            typedArray.recycle();
-
-            setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(fontType));
-        }
+    public void setUseParsiDigits(boolean useParsiDigits) {
+        this.useParsiDigits = useParsiDigits;
 
         requestLayout();
     }
 
-    private void init(Context context,AttributeSet attributeSet){
-
-        if(!isInEditMode()){
-
-            TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiTextView, 0, 0);
-
-            shouldReplaceWithParsiDigits = typedArray.getBoolean(R.styleable.ParsiCheckBox_useParsiDigits, true);
-            fontType = FontType.getType(typedArray.getInt(R.styleable.ParsiCheckBox_typefaceStyle, 0));
-
-            typedArray.recycle();
-
-            setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(fontType));
-        }
-
-        requestLayout();
+    public FontType getTypefaceStyle() {
+        return typefaceStyle;
     }
 
-    public boolean isShouldReplaceWithParsiDigits() {
-        return shouldReplaceWithParsiDigits;
-    }
-
-    public void setShouldReplaceWithParsiDigits(boolean shouldReplaceWithParsiDigits) {
-        this.shouldReplaceWithParsiDigits = shouldReplaceWithParsiDigits;
-
-        requestLayout();
-    }
-
-    public FontType getFontType() {
-        return fontType;
-    }
-
-    public void setFontType(FontType fontType) {
-        this.fontType = fontType;
+    public void setTypefaceStyle(FontType typefaceStyle) {
+        this.typefaceStyle = typefaceStyle;
 
         requestLayout();
     }
