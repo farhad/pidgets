@@ -23,23 +23,6 @@ public class ParsiEditText extends AppCompatEditText {
     public ParsiEditText(Context context) {
         super(context);
 
-        init(context);
-    }
-
-    public ParsiEditText(Context context, AttributeSet attrs) {
-        super(context, attrs);
-
-        init(context, attrs);
-    }
-
-    public ParsiEditText(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-
-        init(context, attrs , defStyleAttr);
-    }
-
-    private void init(Context context) {
-
         TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiEditText);
 
         initialize(context,typedArray);
@@ -47,19 +30,20 @@ public class ParsiEditText extends AppCompatEditText {
         typedArray.recycle();
     }
 
-    private void init(Context context, AttributeSet attributeSet) {
+    public ParsiEditText(Context context, AttributeSet attrs) {
+        super(context, attrs);
 
-        TypedArray typedArray = context.obtainStyledAttributes(attributeSet, R.styleable.ParsiEditText);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.ParsiEditText);
 
         initialize(context,typedArray);
 
         typedArray.recycle();
-
     }
 
-    private void init(Context context,AttributeSet attributeSet, int defStyleAttr){
+    public ParsiEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
 
-        TypedArray typedArray = context.obtainStyledAttributes(attributeSet,R.styleable.ParsiEditText,defStyleAttr,defStyleAttr) ;
+        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.ParsiEditText,defStyleAttr,defStyleAttr);
 
         initialize(context,typedArray);
 
