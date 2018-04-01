@@ -67,4 +67,11 @@
 
     </declare-styleable>
 
+    <declare-styleable name="ParsiTextInputLayout">
+
+        <attr name="useParsiDigits" />
+        <attr name="typefaceStyle" />
+
+    </declare-styleable>
+
 </resources>
