@@ -14,7 +14,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-
         ParsiTypeface.getInstance()
                 .regular("fonts/irsansregular.ttf")
                 .bold("fonts/irsansbold.ttf")
