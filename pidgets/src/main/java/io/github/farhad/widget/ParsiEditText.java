@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import io.github.farhad.R;
@@ -61,9 +62,20 @@ public class ParsiEditText extends AppCompatEditText {
             setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));
 
             if (hideBottomLine) {
-                getBackground().mutate().setColorFilter(ContextCompat.getColor(context, R.color.transparent), PorterDuff.Mode.SRC_ATOP);
+
+                removeBottomLine();
             }
         }
+    }
+
+    private void removeBottomLine()
+    {
+        int paddingBottom = getPaddingBottom() ;
+        int paddingTop = getPaddingTop();
+        int paddingStart = ViewCompat.getPaddingStart(this) ;
+        int paddingEnd = ViewCompat.getPaddingEnd(this) ;
+        ViewCompat.setBackground(this, null) ;
+        ViewCompat.setPaddingRelative(this, paddingStart, paddingTop, paddingEnd, paddingBottom) ;
     }
 
     @Override
@@ -102,11 +114,10 @@ public class ParsiEditText extends AppCompatEditText {
 
     public void setTypefaceStyle(FontType typefaceStyle) {
         this.typefaceStyle = typefaceStyle;
-
         setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));
     }
 
-    public boolean hideBottomLine() {
+    public boolean isBottomLineHidden() {
         return hideBottomLine;
     }
 
@@ -115,7 +126,7 @@ public class ParsiEditText extends AppCompatEditText {
 
         if(hideBottomLine){
 
-            getBackground().mutate().setColorFilter(ContextCompat.getColor(getContext(), R.color.transparent), PorterDuff.Mode.SRC_ATOP);
+            removeBottomLine();
         }
     }
 }
