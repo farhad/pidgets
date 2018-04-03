@@ -29,8 +29,8 @@ ext {
 
     vBuildTools = "27.0.3"
     vMinSdk = 15
-    vTargetSdk = 26
-    vCompileSdk = 26
+    vTargetSdk = 27
+    vCompileSdk = 27
 
     vMajor = 2
     vMinor = 1
@@ -40,7 +40,7 @@ ext {
     pidgetLibVersionName = "${vMajor}.${vMinor}.${vPatch}"
 
     supportPackage = "com.android.support"
-    vSupportLibrary = "26.1.0"
+    vSupportLibrary = "27.1.0"
 
     dependencies = [
 
