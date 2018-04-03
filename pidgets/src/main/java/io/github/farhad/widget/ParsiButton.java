@@ -8,7 +8,7 @@ import io.github.farhad.R;
 import io.github.farhad.typeface.ParsiTypeface;
 import io.github.farhad.typeface.FontType;
 import io.github.farhad.utils.parsi.ParsiUtils;
-import io.github.farhad.utils.Utils;
+import io.github.farhad.utils.PidgetUtils;
 
 /**
  * Created by farhad on 12/20/16.
@@ -63,7 +63,7 @@ public class ParsiButton extends AppCompatButton {
     @Override
     public void setText(CharSequence text, BufferType type) {
 
-        if (useParsiDigits && Utils.containsDigits(text.toString()))
+        if (useParsiDigits && PidgetUtils.containsDigits(text.toString()))
             super.setText(ParsiUtils.replaceWithParsiDigits(text.toString()), type);
 
         else

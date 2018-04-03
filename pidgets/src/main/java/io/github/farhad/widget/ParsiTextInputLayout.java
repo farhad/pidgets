@@ -5,13 +5,10 @@ import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 import io.github.farhad.R;
 import io.github.farhad.typeface.FontType;
 import io.github.farhad.typeface.ParsiTypeface;
-import io.github.farhad.utils.Utils;
-import io.github.farhad.utils.parsi.ParsiUtils;
 
 public class ParsiTextInputLayout extends TextInputLayout {
 
