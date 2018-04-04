@@ -9,6 +9,8 @@ import android.util.AttributeSet;
 import io.github.farhad.R;
 import io.github.farhad.typeface.FontType;
 import io.github.farhad.typeface.ParsiTypeface;
+import io.github.farhad.utils.PidgetUtils;
+import io.github.farhad.utils.parsi.ParsiUtils;
 
 public class ParsiTextInputLayout extends TextInputLayout {
 
@@ -57,7 +59,34 @@ public class ParsiTextInputLayout extends TextInputLayout {
     }
 
     @Override
+    public void setHint(@Nullable CharSequence hint) {
+
+        String formattedHint = hint.toString() ;
+
+        if(useParsiDigits && PidgetUtils.containsDigits(formattedHint))
+            formattedHint = ParsiUtils.replaceWithParsiDigits(formattedHint) ;
+
+        super.setHint(formattedHint);
+    }
+
+    @Override
     public void setTooltipText(@Nullable CharSequence tooltipText) {
         super.setTooltipText(tooltipText);
+    }
+
+    public boolean useParsiDigits() {
+        return useParsiDigits;
+    }
+
+    public void setUseParsiDigits(boolean useParsiDigits) {
+        this.useParsiDigits = useParsiDigits;
+    }
+
+    public FontType getTypefaceStyle() {
+        return typefaceStyle;
+    }
+
+    public void setTypefaceStyle(FontType typefaceStyle) {
+        this.typefaceStyle = typefaceStyle;
     }
 }
