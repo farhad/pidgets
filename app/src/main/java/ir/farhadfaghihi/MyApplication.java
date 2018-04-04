@@ -15,7 +15,7 @@ public class MyApplication extends Application {
         super.onCreate();
 
         ParsiTypeface.getInstance()
-                .regular("fonts/mirza_bold.ttf")
+                .regular("fonts/mirza_regular.ttf")
                 .bold("fonts/mirza_bold.ttf")
                 .semiBold("fonts/mirza_semibold.ttf")
                 .init(this);

@@ -2,6 +2,9 @@ package io.github.farhad.utils.textwatcher;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
 import android.widget.EditText;
 
 import java.util.regex.Pattern;
@@ -9,19 +12,29 @@ import java.util.regex.Pattern;
 public class BankCardTextWatcher implements TextWatcher {
 
     private EditText editText ;
+    private int lastLength ;
+    private int minLengthForGrouping ;
 
     public BankCardTextWatcher(EditText editText)
     {
+        this.editText =editText ;
+        this.minLengthForGrouping = 0 ;
+    }
+
+    public BankCardTextWatcher(EditText editText,int minLengthForGrouping)
+    {
         this.editText = editText ;
+        this.minLengthForGrouping = minLengthForGrouping ;
     }
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+        lastLength = charSequence.length() ;
     }
 
     @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+    public void onTextChanged(CharSequence charSequence, int  start, int before, int count) {
 
     }
 
@@ -30,17 +43,23 @@ public class BankCardTextWatcher implements TextWatcher {
 
         Pattern cardCodePattern = Pattern.compile("([0-9]{0,4})|([0-9]{4}-)+|([0-9]{4}-[0-9]{0,4})+");
 
-        String numbersOnly = removeGroupSeparators(editable.toString());
+        String formattedText = editable.toString();
 
-        if (editable.length() == 16 && !cardCodePattern.matcher(editable).matches())
+        if (lastLength > editable.toString().length())
         {
-            String code = formatNumbersAsCode(numbersOnly);
-
-            editText.removeTextChangedListener(this);
-            editText.setText(code);
-            editText.setSelection(code.length());
-            editText.addTextChangedListener(this);
+            formattedText = removeGroupSeparators(editable.toString()) ;
         }
+
+        else if(editable.length() > minLengthForGrouping
+                && !cardCodePattern.matcher(editable).matches())
+        {
+            formattedText = formatNumbersAsCode(removeGroupSeparators(editable.toString()));
+        }
+
+        editText.removeTextChangedListener(this);
+        editText.setText(formattedText);
+        editText.setSelection(editText.getText().length());
+        editText.addTextChangedListener(this);
     }
 
 
@@ -51,16 +70,16 @@ public class BankCardTextWatcher implements TextWatcher {
 
     private String formatNumbersAsCode(CharSequence s) {
         int groupDigits = 0;
-        String tmp = "";
+        StringBuilder tmp = new StringBuilder();
         int i;
         for (i = 0; i < s.length() - 1; i++) {
-            tmp += s.charAt(i);
+            tmp.append(s.charAt(i));
             ++groupDigits;
             if (groupDigits == 4) {
-                tmp += "-";
+                tmp.append("-");
                 groupDigits = 0;
             }
         }
-        return tmp + s.charAt(i);
+        return tmp.toString() + s.charAt(i);
     }
 }
