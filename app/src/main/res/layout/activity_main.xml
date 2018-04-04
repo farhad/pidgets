@@ -20,7 +20,8 @@
             android:inputType="number"
             android:digits="0123456789"
             app:hideBottomLine="true"
-            android:layout_width="150dp"
+            android:layout_width="200dp"
+            android:gravity="center"
             android:layout_height="wrap_content" />
 
         <io.github.farhad.widget.ParsiButton
