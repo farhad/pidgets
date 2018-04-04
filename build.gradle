@@ -42,11 +42,15 @@ ext {
     supportPackage = "com.android.support"
     vSupportLibrary = "27.1.0"
 
+    vLeakCanary = '1.5.4'
+
     dependencies = [
 
             appcompat   : "$supportPackage:appcompat-v7:$vSupportLibrary" ,
             design      : "$supportPackage:design:$vSupportLibrary" ,
-            pidgets     : "io.github.farhad:pidgets:$vMajor.$vMinor.$vPatch"
+            pidgets     : "io.github.farhad:pidgets:$vMajor.$vMinor.$vPatch" ,
+            leak_canary_debug : "com.squareup.leakcanary:leakcanary-android:$vLeakCanary" ,
+            leak_canary_release : "com.squareup.leakcanary:leakcanary-android-no-op:$vLeakCanary"
     ]
 }
 

@@ -36,4 +36,7 @@ dependencies {
     implementation depMap.design
 //    implementation depMap.pidgets
     implementation project(':pidgets')
+
+    debugImplementation depMap.leak_canary_debug
+    releaseImplementation depMap.leak_canary_release
 }
