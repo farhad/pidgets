@@ -16,8 +16,6 @@ artifacts {
     archives sourcesJar
 }
 
-// Bintray
-
 def _user = System.getenv("BINTRAY_USER")
 def _key =  System.getenv("BINTRAY_API_KEY")
 def _passphrase = System.getenv("BINTRAY_PASSPHRASE")
@@ -61,5 +59,3 @@ bintray {
         }
     }
 }
-
-//from https://github.com/workarounds/bundler/blob/master/gradle/bintray-java-v1.gradle
