@@ -12,14 +12,30 @@ android {
 
         versionCode         configs.pidgetLibVersionCode
         versionName         configs.pidgetLibVersionName
-
-        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+
+        debug
+                {
+                    debuggable true
+                    minifyEnabled false
+                    shrinkResources false
+                    zipAlignEnabled false
+                    proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+                    versionNameSuffix "-SNAPSHOT"
+                }
+
+        release
+                {
+                    debuggable false
+                    jniDebuggable false
+                    renderscriptDebuggable false
+                    minifyEnabled true
+                    shrinkResources false
+                    zipAlignEnabled true
+                    proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                }
     }
 
     lintOptions {
@@ -31,9 +47,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    Map<String,String> depMap = configs.dependencies
-    implementation depMap.appcompat
-    implementation depMap.design
+    Map<String,String> deps = configs.dependencies
+    implementation deps.appcompat
+    implementation deps.design
 }
 
 ext
