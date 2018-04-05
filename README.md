@@ -7,7 +7,7 @@ so that we can save time and focus on the core problem.
 
 ## Download
 ```groovy
-implementation 'io.github.farhad:pidgets:2.1.0'
+implementation 'io.github.farhad:pidgets:3.0.0'
 ```
 
 License
