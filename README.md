@@ -2,16 +2,17 @@
 
 [![Download](https://api.bintray.com/packages/farhad/maven/pidgets/images/download.svg)](https://bintray.com/farhad/maven/pidgets/_latestVersion)
 
-The purpose of the `Pidgets` project is to provide resuable widgets and utilities for day-to-day routine tasks,
-so that we can save time and focus on the core problem.
+`pidgets ` is a collection of reusable tools for Android day-to-day development, with first class support for the Persian language and Iranian developers requirements.
 
 ## Download
 ```groovy
+repositories{
+	jcenter()
+}
+
 implementation 'io.github.farhad:pidgets:3.0.0'
 ```
-
-License
-=======
+## License
 
     Copyright (C) 2016  Farhad Faghihi
 
