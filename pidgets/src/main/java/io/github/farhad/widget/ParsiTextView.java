@@ -52,8 +52,6 @@ public class ParsiTextView extends AppCompatTextView {
             useParsiDigits = typedArray.getBoolean(R.styleable.ParsiTextView_useParsiDigits, true);
             typefaceStyle = FontType.getType(typedArray.getInt(R.styleable.ParsiTextView_typefaceStyle, 0));
 
-            typedArray.recycle();
-
             setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));
         }
     }
