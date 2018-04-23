@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.provider.Settings;
 import android.support.annotation.ColorInt;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -106,5 +107,53 @@ public class PidgetUtils {
         }
 
         return sb.toString() ;
+    }
+
+    public static void closeKeyboard(Context context,View view){
+
+        try
+        {
+            InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+
+        catch (Exception exc)
+        {
+            exc.printStackTrace();
+        }
+    }
+
+    public static String formatAmount(String value, String separator) {
+        String result = "";
+        int len = value.length();
+        int loop = (len / 3);
+
+        int start = 0;
+        int end = len - (loop * 3);
+
+        result = value.substring(start, end);
+
+        for (int i = 0; i < loop; i++) {
+            start = end;
+            end += 3;
+            if (result.equals(""))
+                result = value.substring(start, end);
+            else
+                result = result + separator + value.substring(start, end);
+        }
+
+        return result;
+    }
+
+    public static String formatMoneyIR(String amount)
+    {
+        return formatAmount(amount,",") ;
+    }
+
+    public static String formatAmountWithCurrencyTagIR(String amount) {
+
+        return new StringBuilder().append(formatMoneyIR(amount))
+                .append(" ")
+                .append("ریال").toString() ;
     }
 }
