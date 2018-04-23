@@ -53,7 +53,7 @@ public class ParsiCheckBox extends AppCompatCheckBox {
 
         if(!isInEditMode()){
 
-            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiCheckBox_useParsiDigits, true);
+            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiCheckBox_useParsiDigits, false);
             typefaceStyle = FontType.getType(typedArray.getInt(R.styleable.ParsiCheckBox_typefaceStyle, 0));
 
             setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));

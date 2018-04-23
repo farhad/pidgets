@@ -52,7 +52,7 @@ public class ParsiRadioButton extends AppCompatRadioButton {
     {
         if(!isInEditMode()){
 
-            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiRadioButton_useParsiDigits, true);
+            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiRadioButton_useParsiDigits, false);
             typefaceStyle = FontType.getType(typedArray.getInt(R.styleable.ParsiRadioButton_typefaceStyle, 0));
 
             setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));

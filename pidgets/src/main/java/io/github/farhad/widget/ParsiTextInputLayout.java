@@ -51,7 +51,7 @@ public class ParsiTextInputLayout extends TextInputLayout {
     {
         if(!isInEditMode())
         {
-            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_useParsiDigits, true);
+            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_useParsiDigits, false);
             typefaceStyle  = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_typefaceStyle, 0));
 
             setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));

@@ -10,7 +10,7 @@ repositories{
 	jcenter()
 }
 
-implementation 'io.github.farhad:pidgets:3.0.7'
+implementation 'io.github.farhad:pidgets:3.0.13'
 ```
 ## License
 

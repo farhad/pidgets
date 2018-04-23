@@ -53,7 +53,7 @@ public class ParsiButton extends AppCompatButton {
 
         if(!isInEditMode()) {
 
-            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiButton_useParsiDigits,true) ;
+            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiButton_useParsiDigits,false) ;
             typefaceStyle = FontType.getType(typedArray.getInt(R.styleable.ParsiButton_typefaceStyle,0)) ;
 
             setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));

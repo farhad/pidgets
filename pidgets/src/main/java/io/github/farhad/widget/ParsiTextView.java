@@ -49,7 +49,7 @@ public class ParsiTextView extends AppCompatTextView {
 
         if (!isInEditMode()) {
 
-            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiTextView_useParsiDigits, true);
+            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiTextView_useParsiDigits, false);
             typefaceStyle = FontType.getType(typedArray.getInt(R.styleable.ParsiTextView_typefaceStyle, 0));
 
             setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));

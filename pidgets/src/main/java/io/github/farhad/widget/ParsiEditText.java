@@ -53,7 +53,7 @@ public class ParsiEditText extends AppCompatEditText {
 
         if(!isInEditMode())
         {
-            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_useParsiDigits, true);
+            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiEditText_useParsiDigits, false);
             typefaceStyle  = FontType.getType(typedArray.getInt(R.styleable.ParsiEditText_typefaceStyle, 0));
             hideBottomLine = typedArray.getBoolean(R.styleable.ParsiEditText_hideBottomLine, false);
 
