@@ -2,28 +2,26 @@ package io.github.farhad.utils.textwatcher;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.regex.Pattern;
 
 public class BankCardTextWatcher implements TextWatcher {
 
-    private EditText editText ;
+    private TextView textView;
     private int lastLength ;
     private int minLengthForGrouping ;
 
-    public BankCardTextWatcher(EditText editText)
+    public BankCardTextWatcher(TextView textView)
     {
-        this.editText =editText ;
+        this.textView =textView ;
         this.minLengthForGrouping = 0 ;
     }
 
-    public BankCardTextWatcher(EditText editText,int minLengthForGrouping)
+    public BankCardTextWatcher(TextView textView, int minLengthForGrouping)
     {
-        this.editText = editText ;
+        this.textView = textView;
         this.minLengthForGrouping = minLengthForGrouping ;
     }
 
@@ -50,16 +48,18 @@ public class BankCardTextWatcher implements TextWatcher {
             formattedText = removeGroupSeparators(editable.toString()) ;
         }
 
-        else if(editable.length() > minLengthForGrouping
+        else if(editable.length() >= minLengthForGrouping
                 && !cardCodePattern.matcher(editable).matches())
         {
             formattedText = formatNumbersAsCode(removeGroupSeparators(editable.toString()));
         }
 
-        editText.removeTextChangedListener(this);
-        editText.setText(formattedText);
-        editText.setSelection(editText.getText().length());
-        editText.addTextChangedListener(this);
+        textView.removeTextChangedListener(this);
+        textView.setText(formattedText);
+        textView.addTextChangedListener(this);
+
+        if(textView instanceof EditText)
+            ((EditText)textView).setSelection(textView.getText().length());
     }
 
 
