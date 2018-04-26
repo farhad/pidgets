@@ -14,9 +14,20 @@
         android:layout_height="match_parent">
 
         <io.github.farhad.widget.ParsiEditText
-            android:id="@+id/etPhoneNumber"
+            android:id="@+id/etCardNumber"
             android:padding="10dp"
-            app:useParsiDigits="true"
+            app:useParsiDigits="false"
+            android:inputType="number"
+            android:digits="0123456789"
+            app:hideBottomLine="true"
+            android:layout_width="200dp"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+        <io.github.farhad.widget.ParsiTextView
+            android:id="@+id/tvCardNumber"
+            android:padding="10dp"
+            app:useParsiDigits="false"
             android:inputType="number"
             android:digits="0123456789"
             app:hideBottomLine="true"
