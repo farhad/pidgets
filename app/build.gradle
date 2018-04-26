@@ -59,7 +59,7 @@ dependencies {
     Map<String, String> deps = configs.dependencies
     implementation deps.appcompat
     implementation deps.design
-
+//    implementation deps.pidgets
     debugImplementation deps.leak_canary_debug
     releaseImplementation deps.leak_canary_release
 }
