@@ -6,33 +6,34 @@ package io.github.farhad.typeface;
 
 public enum FontType {
 
-    REGULAR     (0) ,
-    SEMI_BOLD   (1) ,
-    BOLD        (2) ,
-    ITALIC      (3) ;
+  REGULAR(0),
+  SEMI_BOLD(1),
+  BOLD(2),
+  ITALIC(3);
 
-    int value ;
+  int value;
 
-    FontType(int value) {
-        this.value = value ;
+  FontType(int value) {
+    this.value = value;
+  }
+
+  public static FontType getType(int type) {
+
+    for (FontType item : values()) {
+      if (item.value == type) {
+        return item;
+      }
     }
 
-    public int getValue() {
-        return value;
-    }
+    return REGULAR;
+  }
 
-    public void setValue(int value) {
-        this.value = value;
-    }
+  public int getValue() {
+    return value;
+  }
 
-    public static FontType getType(int type) {
-
-        for(FontType item : values()){
-            if(item.value == type)
-                return item ;
-        }
-
-        return REGULAR ;
-    }
+  public void setValue(int value) {
+    this.value = value;
+  }
 
 }

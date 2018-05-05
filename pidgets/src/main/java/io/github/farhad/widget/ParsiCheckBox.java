@@ -4,91 +4,92 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.util.AttributeSet;
-
 import io.github.farhad.R;
-import io.github.farhad.typeface.ParsiTypeface;
 import io.github.farhad.typeface.FontType;
-import io.github.farhad.utils.parsi.ParsiUtils;
+import io.github.farhad.typeface.ParsiTypeface;
 import io.github.farhad.utils.PidgetUtils;
+import io.github.farhad.utils.parsi.ParsiUtils;
 
 /**
  * Created by haniyeh on 08/07/16.
  */
 public class ParsiCheckBox extends AppCompatCheckBox {
 
-    private boolean useParsiDigits;
-    private FontType typefaceStyle;
+  private boolean useParsiDigits;
+  private FontType typefaceStyle;
 
-    public ParsiCheckBox(Context context) {
-        super(context);
+  public ParsiCheckBox(Context context) {
+    super(context);
 
-        TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiCheckBox) ;
+    TypedArray typedArray = context.obtainStyledAttributes(R.styleable.ParsiCheckBox);
 
-        init(context,typedArray);
+    init(context, typedArray);
 
-        typedArray.recycle();
+    typedArray.recycle();
+  }
+
+  public ParsiCheckBox(Context context, AttributeSet attrs) {
+    super(context, attrs);
+
+    TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.ParsiCheckBox);
+
+    init(context, typedArray);
+
+    typedArray.recycle();
+  }
+
+  public ParsiCheckBox(Context context, AttributeSet attrs, int defStyleAttr) {
+    super(context, attrs, defStyleAttr);
+
+    TypedArray typedArray = context
+        .obtainStyledAttributes(attrs, R.styleable.ParsiCheckBox, defStyleAttr, defStyleAttr);
+
+    init(context, typedArray);
+
+    typedArray.recycle();
+  }
+
+  private void init(Context context, TypedArray typedArray) {
+
+    if (!isInEditMode()) {
+
+      useParsiDigits = typedArray.getBoolean(R.styleable.ParsiCheckBox_useParsiDigits, false);
+      typefaceStyle = FontType
+          .getType(typedArray.getInt(R.styleable.ParsiCheckBox_typefaceStyle, 0));
+
+      setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));
     }
+  }
 
-    public ParsiCheckBox(Context context, AttributeSet attrs) {
-        super(context, attrs);
+  @Override
+  public void setText(CharSequence text, BufferType type) {
+    if (!isInEditMode()) {
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.ParsiCheckBox) ;
-
-        init(context,typedArray);
-
-        typedArray.recycle();
+      if (useParsiDigits && PidgetUtils.containsDigits(text.toString())) {
+        super.setText(ParsiUtils.replaceWithParsiDigits(text.toString()), type);
+      } else {
+        super.setText(text, type);
+      }
     }
+  }
 
-    public ParsiCheckBox(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+  public boolean isUseParsiDigits() {
+    return useParsiDigits;
+  }
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.ParsiCheckBox,defStyleAttr,defStyleAttr) ;
+  public void setUseParsiDigits(boolean useParsiDigits) {
+    this.useParsiDigits = useParsiDigits;
 
-        init(context,typedArray);
+    requestLayout();
+  }
 
-        typedArray.recycle();
-    }
+  public FontType getTypefaceStyle() {
+    return typefaceStyle;
+  }
 
-    private void init(Context context,TypedArray typedArray){
+  public void setTypefaceStyle(FontType typefaceStyle) {
+    this.typefaceStyle = typefaceStyle;
 
-        if(!isInEditMode()){
-
-            useParsiDigits = typedArray.getBoolean(R.styleable.ParsiCheckBox_useParsiDigits, false);
-            typefaceStyle = FontType.getType(typedArray.getInt(R.styleable.ParsiCheckBox_typefaceStyle, 0));
-
-            setTypeface(ParsiTypeface.getInstance().getMatchingTypeface(typefaceStyle));
-        }
-    }
-
-    @Override
-    public void setText(CharSequence text, BufferType type)
-    {
-        if(!isInEditMode()) {
-
-            if (useParsiDigits && PidgetUtils.containsDigits(text.toString()))
-                super.setText(ParsiUtils.replaceWithParsiDigits(text.toString()), type);
-            else
-                super.setText(text, type);
-        }
-    }
-
-    public boolean isUseParsiDigits() {
-        return useParsiDigits;
-    }
-
-    public void setUseParsiDigits(boolean useParsiDigits) {
-        this.useParsiDigits = useParsiDigits;
-
-        requestLayout();
-    }
-
-    public FontType getTypefaceStyle() {
-        return typefaceStyle;
-    }
-
-    public void setTypefaceStyle(FontType typefaceStyle) {
-        this.typefaceStyle = typefaceStyle;
-
-        requestLayout();
-    }
+    requestLayout();
+  }
 }

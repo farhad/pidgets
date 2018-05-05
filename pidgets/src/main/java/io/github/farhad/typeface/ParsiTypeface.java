@@ -6,118 +6,125 @@ import android.text.TextUtils;
 
 public class ParsiTypeface {
 
-    private static ParsiTypeface instance;
+  private static ParsiTypeface instance;
 
-    private Typeface typefaceRegular;
-    private Typeface typefaceSemiBold;
-    private Typeface typefaceBold;
-    private Typeface typefaceItalic;
+  private Typeface typefaceRegular;
+  private Typeface typefaceSemiBold;
+  private Typeface typefaceBold;
+  private Typeface typefaceItalic;
 
-    private String regularUri ;
-    private String semiBoldUri ;
-    private String boldUri ;
-    private String italicUri ;
+  private String regularUri;
+  private String semiBoldUri;
+  private String boldUri;
+  private String italicUri;
 
-    private ParsiTypeface() {
+  private ParsiTypeface() {
+  }
+
+  public static ParsiTypeface getInstance() {
+
+    if (instance == null) {
+      instance = new ParsiTypeface();
     }
 
-    public static ParsiTypeface getInstance() {
+    return instance;
+  }
 
-        if(instance == null)
-            instance = new ParsiTypeface();
+  public ParsiTypeface regular(String pathToRegularFont) {
 
-        return instance ;
+    regularUri = pathToRegularFont;
+    return instance;
+  }
+
+  public ParsiTypeface semiBold(String pathToSemiBoldFont) {
+
+    semiBoldUri = pathToSemiBoldFont;
+    return instance;
+  }
+
+  public ParsiTypeface bold(String pathToBoldFont) {
+
+    boldUri = pathToBoldFont;
+    return instance;
+  }
+
+  public ParsiTypeface italic(String pathToItalicFont) {
+
+    italicUri = pathToItalicFont;
+    return instance;
+  }
+
+  public ParsiTypeface init(Application application) {
+    if (!TextUtils.isEmpty(regularUri)) {
+      typefaceRegular = Typeface.createFromAsset(application.getAssets(), regularUri);
     }
 
-    public ParsiTypeface regular(String pathToRegularFont) {
-
-        regularUri = pathToRegularFont ;
-        return instance ;
+    if (!TextUtils.isEmpty(semiBoldUri)) {
+      typefaceSemiBold = Typeface.createFromAsset(application.getAssets(), semiBoldUri);
     }
 
-    public ParsiTypeface semiBold(String pathToSemiBoldFont) {
-
-        semiBoldUri = pathToSemiBoldFont ;
-        return instance ;
+    if (!TextUtils.isEmpty(boldUri)) {
+      typefaceBold = Typeface.createFromAsset(application.getAssets(), boldUri);
     }
 
-    public ParsiTypeface bold(String pathToBoldFont) {
-
-        boldUri = pathToBoldFont ;
-        return instance ;
+    if (!TextUtils.isEmpty(italicUri)) {
+      typefaceItalic = Typeface.createFromAsset(application.getAssets(), italicUri);
     }
 
-    public ParsiTypeface italic(String pathToItalicFont) {
-
-        italicUri = pathToItalicFont ;
-        return instance ;
-    }
-
-    public ParsiTypeface init(Application application) {
-        if(!TextUtils.isEmpty(regularUri))
-            typefaceRegular = Typeface.createFromAsset(application.getAssets(), regularUri);
-
-        if(!TextUtils.isEmpty(semiBoldUri))
-            typefaceSemiBold = Typeface.createFromAsset(application.getAssets(),semiBoldUri) ;
-
-        if(!TextUtils.isEmpty(boldUri))
-            typefaceBold = Typeface.createFromAsset(application.getAssets(),boldUri) ;
-
-        if(!TextUtils.isEmpty(italicUri))
-            typefaceItalic = Typeface.createFromAsset(application.getAssets(), italicUri);
-
-        return instance ;
-    }
+    return instance;
+  }
 
 
+  public Typeface getMatchingTypeface(FontType fontType) {
 
-    public Typeface getMatchingTypeface(FontType fontType) {
+    switch (fontType) {
 
-        switch (fontType) {
+      case REGULAR:
+        return typefaceRegular;
 
-            case REGULAR:
-                return typefaceRegular;
+      case SEMI_BOLD: {
 
-            case SEMI_BOLD: {
-
-                if (null != typefaceSemiBold)
-                    return typefaceSemiBold;
-
-                return typefaceRegular;
-            }
-
-            case BOLD: {
-                if (null != typefaceBold)
-                    return typefaceBold;
-
-                return typefaceRegular;
-            }
-
-            case ITALIC: {
-                if (null != typefaceItalic)
-                    return typefaceItalic;
-
-                return typefaceRegular;
-            }
-
-            default:
-                return typefaceRegular;
+        if (null != typefaceSemiBold) {
+          return typefaceSemiBold;
         }
-    }
 
-    public Typeface getRegular() {
+        return typefaceRegular;
+      }
+
+      case BOLD: {
+        if (null != typefaceBold) {
+          return typefaceBold;
+        }
+
+        return typefaceRegular;
+      }
+
+      case ITALIC: {
+        if (null != typefaceItalic) {
+          return typefaceItalic;
+        }
+
+        return typefaceRegular;
+      }
+
+      default:
         return typefaceRegular;
     }
+  }
 
-    public Typeface getSemiBold() {
-        return typefaceSemiBold;
-    }
+  public Typeface getRegular() {
+    return typefaceRegular;
+  }
 
-    public Typeface getBold() {
-        return typefaceBold;
-    }
+  public Typeface getSemiBold() {
+    return typefaceSemiBold;
+  }
 
-    public Typeface getItalic() {
-        return typefaceItalic;
-    }
+  public Typeface getBold() {
+    return typefaceBold;
+  }
+
+  public Typeface getItalic() {
+    return typefaceItalic;
+  }
 }
